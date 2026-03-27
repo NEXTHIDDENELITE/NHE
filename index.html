@@ -461,8 +461,7 @@
 
     <main id="main-content">
         <header class="hero-header">
-            <h1>NEXT HIDDEN ELITE</h1>
-            <p>Master your game with pro-level tools.</p>
+            <h1>NEXT HIDDEN ELITE</h1> master your game with pro-level tools.</p>
         </header>
 
         <h2 class="section-title">Main Panels</h2>
@@ -536,94 +535,94 @@
         const dynamicContentText = document.getElementById('dynamic-content-text');
 
         function showHome() {
-        mainContentDiv.style.display = 'block';
-        contentDisplayArea.style.display = 'none';
-        window.scrollTo(0, 0);
+            mainContentDiv.style.display = 'block';
+            contentDisplayArea.style.display = 'none';
+            window.scrollTo(0, 0);
         }
 
         // UPDATED FREE PANEL - DIRECT DOWNLOAD
         function showFreePanel() {
-        mainContentDiv.style.display = 'none';
-        contentDisplayArea.style.display = 'block';
+            mainContentDiv.style.display = 'none';
+            contentDisplayArea.style.display = 'block';
 
-        dynamicContentText.innerHTML = `
-        <div class="free-download-box">
-        <div class="pc-panel-title">FREE PC PANEL</div>
-        <div class="panel-version">NHE FREE PANEL V2.3 - High Performance</div>
+            dynamicContentText.innerHTML = `
+            <div class="free-download-box">
+                <div class="pc-panel-title">FREE PC PANEL</div>
+                <div class="panel-version">NHE FREE PANEL V2.3 - High Performance</div>
 
-        <a href="NHE FREE PANEL V2.3.zip" download class="download-btn">
-        <i class="fa-solid fa-file-zipper"></i> DOWNLOAD
-        </a>
+                <a href="NHE FREE PANEL V2.3.zip" download class="download-btn">
+                    <i class="fa-solid fa-file-zipper"></i> DOWNLOAD
+                </a>
 
-        <br><br>
-        <div class="rar-pass">RAR PASS : 1</div>
+                <br><br>
+                <div class="rar-pass">RAR PASS : 1</div>
 
-        <div class="danger-text">
-        <i class="fa-solid fa-code"></i> DANGER <i class="fa-solid fa-skull-crossbones"></i>
-        </div>
-        </div>
-        `;
-        window.scrollTo(0, 0);
+                <div class="danger-text">
+                    <i class="fa-solid fa-code"></i> DANGER <i class="fa-solid fa-skull-crossbones"></i>
+                </div>
+            </div>
+            `;
+            window.scrollTo(0, 0);
         }
 
         function showPayment(title, price) {
-        mainContentDiv.style.display = 'none';
-        contentDisplayArea.style.display = 'block';
+            mainContentDiv.style.display = 'none';
+            contentDisplayArea.style.display = 'block';
 
-        dynamicContentText.innerHTML = `
-        <div class="payment-container">
-        <h2 class="content-title">${title}</h2>
-        <p>এই প্যাকটির বর্তমান মূল্য:</p>
-        <div class="price-tag">৳ ${price}</div>
-        <p style="color: #94a3b8; font-size: 0.9rem;">নিচের নাম্বারে <b>Send Money</b> করে TrxID প্রদান করুন:</p>
-        <h3 style="color: var(--primary-color); background: #0a0e17; border: 1px dashed var(--primary-color); display: inline-block; padding: 10px 20px; border-radius: 8px; margin: 10px 0;">01320700404</h3>
+            dynamicContentText.innerHTML = `
+            <div class="payment-container">
+                <h2 class="content-title">${title}</h2>
+                <p>এই প্যাকটির বর্তমান মূল্য:</p>
+                <div class="price-tag">৳ ${price}</div>
+                <p style="color: #94a3b8; font-size: 0.9rem;">নিচের নাম্বারে <b>Send Money</b> করে TrxID প্রদান করুন:</p>
+                <h3 style="color: var(--primary-color); background: #0a0e17; border: 1px dashed var(--primary-color); display: inline-block; padding: 10px 20px; border-radius: 8px; margin: 10px 0;">01320700404</h3>
 
-        <div class="payment-methods">
-        <div class="method-card">
-        <img src="https://raw.githubusercontent.com/sk-shishir-007/Bkash-Nagad-Rocket-Logo/main/bkash.png" alt="Bkash">
-        </div>
-        <div class="method-card">
-        <img src="https://raw.githubusercontent.com/sk-shishir-007/Bkash-Nagad-Rocket-Logo/main/nagad.png" alt="Nagad">
-        </div>
-        <div class="method-card" style="background: #121a2b; color: #fff; flex-direction: column; font-size: 0.7rem;">
-        <i class="fa-solid fa-globe"></i> NHE Pay
-        </div>
-        </div>
+                <div class="payment-methods">
+                    <div class="method-card">
+                        <img src="my_bkash.png" alt="Bkash">
+                    </div>
+                    <div class="method-card">
+                        <img src="my_nagad.png" alt="Nagad">
+                    </div>
+                    <div class="method-card" style="background: #121a2b; color: #fff; flex-direction: column; font-size: 0.7rem;">
+                        <i class="fa-solid fa-globe"></i> NHE Pay
+                    </div>
+                </div>
 
-        <input type="text" id="userTrx" class="trx-input" placeholder="Transaction ID (TrxID) লিখুন">
-        <button class="buy-now-btn" onclick="confirmOrder()">Confirm Purchase</button>
-        </div>
-        `;
-        window.scrollTo(0, 0);
+                <input type="text" id="userTrx" class="trx-input" placeholder="Transaction ID (TrxID) লিখুন">
+                <button class="buy-now-btn" onclick="confirmOrder()">Confirm Purchase</button>
+            </div>
+            `;
+            window.scrollTo(0, 0);
         }
 
         function showContent(type) {
-        mainContentDiv.style.display = 'none';
-        contentDisplayArea.style.display = 'block';
-        let title = "";
-        let body = "";
-        if (type === 'privacy') {
-        title = `<h2 class="content-title">Privacy Policy</h2>`;
-        body = `<p>আপনার তথ্য আমাদের কাছে শতভাগ নিরাপদ।</p>`;
-        } else if (type === 'disclaimer') {
-        title = `<h2 class="content-title">Disclaimer</h2>`;
-        body = `<p>নিজ দায়িত্বে ব্যবহার করুন।</p>`;
-        } else if (type === 'update') {
-        title = `<h2 class="content-title">System Update</h2>`;
-        body = `<div style="text-align: center;"><h3>Version NHE-V1.0.5</h3><p>কোনো নতুন আপডেট নেই।</p></div>`;
-        }
-        dynamicContentText.innerHTML = title + body;
-        window.scrollTo(0, 0);
+            mainContentDiv.style.display = 'none';
+            contentDisplayArea.style.display = 'block';
+            let title = "";
+            let body = "";
+            if (type === 'privacy') {
+                title = `<h2 class="content-title">Privacy Policy</h2>`;
+                body = `<p>আপনার তথ্য আমাদের কাছে শতভাগ নিরাপদ।</p>`;
+            } else if (type === 'disclaimer') {
+                title = `<h2 class="content-title">Disclaimer</h2>`;
+                body = `<p>নিজ দায়িত্বে ব্যবহার করুন।</p>`;
+            } else if (type === 'update') {
+                title = `<h2 class="content-title">System Update</h2>`;
+                body = `<div style="text-align: center;"><h3>Version NHE-V1.0.5</h3><p>কোনো নতুন আপডেট নেই।</p></div>`;
+            }
+            dynamicContentText.innerHTML = title + body;
+            window.scrollTo(0, 0);
         }
 
         function confirmOrder() {
-        const trx = document.getElementById('userTrx').value;
-        if(trx.length < 5) {
-        alert("দয়া করে সঠিক ট্রানজেকশন আইডি দিন!");
-        } else {
-        alert("ধন্যবাদ! আপনার ট্রানজেকশন আইডিটি গ্রহণ করা হয়েছে। যাচাই শেষে প্যাকটি চালু হবে।");
-        showHome();
-        }
+            const trx = document.getElementById('userTrx').value;
+            if(trx.length < 5) {
+                alert("দয়া করে সঠিক ট্রানজেকশন আইডি দিন!");
+            } else {
+                alert("ধন্যবাদ! আপনার ট্রানজেকশন আইডিটি গ্রহণ করা হয়েছে। যাচাই শেষে প্যাকটি চালু হবে।");
+                showHome();
+            }
         }
     </script>
 </body>

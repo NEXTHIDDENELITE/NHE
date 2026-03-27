@@ -1,330 +1,120 @@
 <!DOCTYPE html>
-<html lang="bn">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> NEXT HIDDEN ELITE - NHE</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Rajdhani:wght@500;700&display=swap" rel="stylesheet">
-
+    <title>ATC TOPUP | Buy Mobile Recharge & Game Credits</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        /* --- Global Styles & Reset --- */
-        :root {
-            --primary-color: #00f2ea; /* Neon Cyan */
-            --secondary-color: #ff0055; /* Neon Pink */
-            --bg-dark: #0a0e17; /* Deep Dark Blue background */
-            --bg-card: #121a2b; /* Slightly lighter card bg */
-            --text-light: #e2e8f0;
-        }
-
-        body {
-            margin: 0;
-            font-family: 'Poppins', sans-serif;
-            background-color: var(--bg-dark);
-            color: var(--text-light);
-            overflow-x: hidden;
-        }
-
-        a { text-decoration: none; color: inherit; }
-        ul { list-style: none; padding: 0; margin: 0; }
-
-        /* --- Top Navigation Bar (Updated UI) --- */
-        .navbar {
-            background: rgba(10, 14, 23, 0.95);
-            backdrop-filter: blur(10px);
-            padding: 15px 30px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            border-bottom: 2px solid rgba(0, 242, 234, 0.1);
-        }
-
-        .brand-logo {
-            font-family: 'Rajdhani', sans-serif;
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--text-light);
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
-        .brand-logo span { color: var(--primary-color); }
-
-        .nav-links {
-            display: flex;
-            gap: 20px;
-            align-items: center;
-        }
-
-        .nav-item {
-            font-size: 0.9rem;
-            font-weight: 500;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            padding: 8px 12px;
-            border-radius: 5px;
-        }
-        .nav-item i { font-size: 1.1rem; color: var(--primary-color); }
-        .nav-item:hover { background: rgba(0, 242, 234, 0.1); color: var(--primary-color); }
-
-        /* Specific Social Icons Colors */
-        .discord-link i { color: #5865F2; }
-        .youtube-link i { color: #FF0000; }
-        .discord-link:hover { background: rgba(88, 101, 242, 0.2); color: #5865F2 !important; }
-        .youtube-link:hover { background: rgba(255, 0, 0, 0.2); color: #FF0000 !important; }
-
-
-        /* --- Main Hero Header --- */
-        .hero-header {
-            text-align: center;
-            padding: 80px 20px 40px;
-            background: radial-gradient(circle at center, #1a233a 0%, #0a0e17 70%);
-        }
-        .hero-header h1 {
-            font-family: 'Rajdhani', sans-serif;
-            font-size: 4rem;
-            margin: 0;
-            text-transform: uppercase;
-            background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            text-shadow: 0 0 20px rgba(0, 242, 234, 0.4);
-        }
-        .hero-header p { font-size: 1.2rem; color: #94a3b8; margin-top: 10px; }
-
-        /* --- Grid Container for Panels --- */
-        .panel-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 25px;
-            max-width: 1100px;
-            margin: 0 auto 50px;
-            padding: 20px;
-        }
-
-        .panel-card {
-            background: var(--bg-card);
-            padding: 35px 25px;
-            border-radius: 20px;
-            text-align: center;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            box-shadow: 0 10px 30px -10px rgba(0,0,0,0.5);
-            transition: all 0.4s ease;
-            position: relative;
-            overflow: hidden;
-            cursor: pointer;
-        }
-
-        .panel-card::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 3px;
-            background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
-            transform: scaleX(0);
-            transform-origin: left;
-            transition: transform 0.4s ease;
-        }
-
-        .panel-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px -15px rgba(0, 242, 234, 0.2);
-        }
-        .panel-card:hover::before { transform: scaleX(1); }
-
-        .card-icon {
-            font-size: 3rem;
-            margin-bottom: 20px;
-            color: var(--primary-color);
-            text-shadow: 0 0 15px var(--primary-color);
-        }
-        .panel-card h3 { font-family: 'Rajdhani', sans-serif; font-size: 1.5rem; margin: 10px 0; }
-        .panel-card p { color: #94a3b8; font-size: 0.9rem; }
-
-        /* --- Hidden Content Area (Privacy/Disclaimer) --- */
-        #content-display-area {
-            display: none; /* Hidden by default */
-            max-width: 800px;
-            margin: 40px auto;
-            padding: 40px;
-            background: var(--bg-card);
-            border-radius: 20px;
-            border: 1px solid rgba(0, 242, 234, 0.2);
-            box-shadow: 0 0 30px rgba(0,0,0,0.5);
-        }
-        
-        .content-title {
-            font-family: 'Rajdhani', sans-serif;
-            font-size: 2rem;
-            color: var(--primary-color);
-            margin-bottom: 20px;
-            border-bottom: 2px solid rgba(255,255,255,0.1);
-            padding-bottom: 15px;
-        }
-        .content-body { line-height: 1.8; color: #ccc; text-align: left; }
-        .content-body li { margin-bottom: 10px; list-style: square; margin-left: 20px; }
-
-        .back-button {
-            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
-            border: none;
-            padding: 12px 25px;
-            color: #fff;
-            font-weight: bold;
-            border-radius: 30px;
-            cursor: pointer;
-            margin-bottom: 30px;
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            transition: 0.3s;
-        }
-        .back-button:hover { filter: brightness(1.2); transform: scale(1.05); }
-
-        /* --- Footer --- */
-        footer {
-            text-align: center;
-            padding: 30px;
-            background: #070a11;
-            color: #64748b;
-            font-size: 0.85rem;
-            border-top: 1px solid rgba(255,255,255,0.05);
-        }
-
-        /* --- Mobile Responsive --- */
-        @media (max-width: 900px) {
-            .navbar { flex-direction: column; padding: 15px; }
-            .brand-logo { margin-bottom: 15px; }
-            .nav-links { flex-wrap: wrap; justify-content: center; gap: 10px; }
-            .hero-header h1 { font-size: 2.5rem; }
-        }
+        .gradient-bg { background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%); }
+        .service-card:hover { transform: translateY(-5px); transition: 0.3s; }
     </style>
 </head>
-<body>
+<body class="bg-gray-50">
 
-    <nav class="navbar">
-        <div class="brand-logo">
-            N<span>H</span>E
+    <header class="gradient-bg text-white shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <div class="bg-white text-blue-600 p-1 rounded font-bold text-xl">ATC</div>
+                <span class="text-xl font-bold tracking-tight">TOPUP</span>
+            </div>
+            <nav class="hidden md:flex space-x-6 font-medium">
+                <a href="#" class="hover:text-blue-200">Home</a>
+                <a href="#" class="hover:text-blue-200">Drive Pack</a>
+                <a href="#" class="hover:text-blue-200">History</a>
+                <a href="#" class="hover:text-blue-200">Wallet</a>
+            </nav>
+            <div class="flex items-center space-x-4">
+                <i class="fa-solid fa-bell cursor-pointer"></i>
+                <div class="w-8 h-8 bg-blue-400 rounded-full flex items-center justify-center">
+                    <i class="fa-solid fa-user text-sm"></i>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="gradient-bg text-white pb-20 pt-10 px-4 rounded-b-[40px]">
+        <div class="container mx-auto text-center">
+            <p class="text-blue-100 text-sm mb-1">Current Balance</p>
+            <h2 class="text-4xl font-bold mb-6">৳ 2,450.00</h2>
+            <div class="flex justify-center space-x-4">
+                <button class="bg-white text-blue-600 px-6 py-2 rounded-full font-bold shadow-lg">Add Money</button>
+                <button class="bg-blue-500 border border-blue-300 px-6 py-2 rounded-full font-bold">My Profile</button>
+            </div>
+        </div>
+    </section>
+
+    <main class="container mx-auto px-4 -mt-10">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <div class="bg-white p-6 rounded-2xl shadow-sm text-center service-card border border-gray-100">
+                <div class="text-blue-600 text-3xl mb-2"><i class="fa-solid fa-mobile-screen"></i></div>
+                <p class="font-semibold text-gray-700">Recharge</p>
+            </div>
+            <div class="bg-white p-6 rounded-2xl shadow-sm text-center service-card border border-gray-100">
+                <div class="text-orange-500 text-3xl mb-2"><i class="fa-solid fa-bolt"></i></div>
+                <p class="font-semibold text-gray-700">Drive Pack</p>
+            </div>
+            <div class="bg-white p-6 rounded-2xl shadow-sm text-center service-card border border-gray-100">
+                <div class="text-green-500 text-3xl mb-2"><i class="fa-solid fa-gamepad"></i></div>
+                <p class="font-semibold text-gray-700">Game Topup</p>
+            </div>
+            <div class="bg-white p-6 rounded-2xl shadow-sm text-center service-card border border-gray-100">
+                <div class="text-purple-600 text-3xl mb-2"><i class="fa-solid fa-receipt"></i></div>
+                <p class="font-semibold text-gray-700">Bill Pay</p>
+            </div>
         </div>
 
-        <ul class="nav-links">
-            <li><a class="nav-item" onclick="showHome()"><i class="fa-solid fa-house"></i> Home</a></li>
-            <li><a class="nav-item" onclick="showContent('privacy')"><i class="fa-solid fa-shield-halved"></i> Privacy</a></li>
-            <li><a class="nav-item" onclick="showContent('disclaimer')"><i class="fa-solid fa-triangle-exclamation"></i> Disclaimer</a></li>
-            <li><a class="nav-item"><i class="fa-solid fa-wand-magic-sparkles"></i> Update</a></li>
+        <div class="mt-10">
+            <div class="flex justify-between items-center mb-4">
+                <h3 class="text-lg font-bold text-gray-800">Hot Offers (Drive Packs)</h3>
+                <a href="#" class="text-blue-600 text-sm font-semibold">View All</a>
+            </div>
             
-            <li>
-                <a href="https://discord.gg/2qNzUt3Z" target="_blank" class="nav-item discord-link">
-                    <i class="fa-brands fa-discord"></i> Discord
-                </a>
-            </li>
-            <li>
-                <a href="https://www.youtube.com/@NAZIM69x" target="_blank" class="nav-item youtube-link">
-                    <i class="fa-brands fa-youtube"></i> YouTube
-                </a>
-            </li>
-        </ul>
-    </nav>
+            <div class="space-y-3">
+                <div class="bg-white p-4 rounded-xl shadow-sm flex justify-between items-center border-l-4 border-blue-600">
+                    <div>
+                        <h4 class="font-bold text-gray-800">GP 40GB + 800 Min</h4>
+                        <p class="text-xs text-gray-500">Validity: 30 Days</p>
+                    </div>
+                    <div class="text-right">
+                        <p class="text-blue-600 font-bold text-lg">৳ 499</p>
+                        <button class="bg-blue-100 text-blue-600 px-3 py-1 rounded text-xs font-bold mt-1">Buy Now</button>
+                    </div>
+                </div>
 
-  <main id="main-content">
-        <header class="hero-header">
-            <h1>NEXT HIDDEN ELITE</h1>
-            <p>Improve game play.</p>
-        </header>
-
-        <div class="panel-container">
-            <div class="panel-card">
-                <i class="fa-solid fa-bolt card-icon"></i>
-                <h3>FREE PANEL</h3>
-                <p>Essential features for everyone, absolutely free.</p>
+                <div class="bg-white p-4 rounded-xl shadow-sm flex justify-between items-center border-l-4 border-red-500">
+                    <div>
+                        <h4 class="font-bold text-gray-800">Robi 50GB Internet</h4>
+                        <p class="text-xs text-gray-500">Validity: 30 Days</p>
+                    </div>
+                    <div class="text-right">
+                        <p class="text-red-500 font-bold text-lg">৳ 380</p>
+                        <button class="bg-red-50 text-red-500 px-3 py-1 rounded text-xs font-bold mt-1">Buy Now</button>
+                    </div>
+                </div>
             </div>
-            <div class="panel-card">
-                <i class="fa-solid fa-computer card-icon" style="color: var(--secondary-color);"></i>
-                <h3>EMULATOR BYPASS</h3>
-                <p>Play safely on PC without detection risks.</p>
-            </div>
-            <div class="panel-card">
-                <i class="fa-solid fa-crosshairs card-icon"></i>
-                <h3>AIMBOT HEAD</h3>
-                <p>Dominate with maximum precision targeting.</p>
-            </div>
-            <div class="panel-card">
-                <i class="fa-solid fa-crown card-icon" style="color: #ffd700;"></i>
-                <h3>NHE PREMIUM V1</h3>
-                <p>Unlock premium power and exclusive tools.</p>
-        </div>
-             <div class="panel-card">
-                <i class="fa-solid fa-crown card-icon" style="color: #ffd700;"></i>
-                 <i class="fa-solid fa-crown card-icon" style="color: #ffd700;"></i>
-                <h3>NHE PREMIUM V2</h3>
-                <p>Unlock premium power and exclusive tools.</p>
         </div>
     </main>
 
-    <section id="content-display-area">
-        <button class="back-button" onclick="showHome()">
-            <i class="fa-solid fa-arrow-left"></i> Back to Panel
-        </button>
-        <div id="dynamic-content-text" class="content-body">
-            </div>
-    </section>
+    <div class="md:hidden fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 flex justify-around py-3">
+        <div class="text-blue-600 flex flex-col items-center">
+            <i class="fa-solid fa-house"></i>
+            <span class="text-[10px]">Home</span>
+        </div>
+        <div class="text-gray-400 flex flex-col items-center">
+            <i class="fa-solid fa-list"></i>
+            <span class="text-[10px]">Orders</span>
+        </div>
+        <div class="text-gray-400 flex flex-col items-center">
+            <i class="fa-solid fa-wallet"></i>
+            <span class="text-[10px]">Wallet</span>
+        </div>
+        <div class="text-gray-400 flex flex-col items-center">
+            <i class="fa-solid fa-headset"></i>
+            <span class="text-[10px]">Support</span>
+        </div>
+    </div>
 
-    <footer>
-        &copy; 2026 NEXT HIDDEN ELITE. Developed for Gamers.
-    </footer>
-
-    <script>
-        // এলিমেন্টগুলো ধরে রাখা
-        const mainContentDiv = document.getElementById('main-content');
-        const contentDisplayArea = document.getElementById('content-display-area');
-        const dynamicContentText = document.getElementById('dynamic-content-text');
-
-        // হোম পেজে ফিরে আসার ফাংশন
-        function showHome() {
-            mainContentDiv.style.display = 'block';
-            contentDisplayArea.style.display = 'none';
-            window.scrollTo(0, 0); // পেজের উপরে নিয়ে যাবে
-        }
-
-        // প্রাইভেসি বা ডিসক্লেমার দেখানোর ফাংশন
-        function showContent(type) {
-            mainContentDiv.style.display = 'none';
-            contentDisplayArea.style.display = 'block';
-            
-            let title = "";
-            let body = "";
-
-            if (type === 'privacy') {
-                title = `<h2 class="content-title"><i class="fa-solid fa-shield-halved"></i> Privacy Policy</h2>`;
-                body = `
-                    <p>Your gaming safety is our top priority. Below is how your data is handled while using the NHE PANEL:</p>
-                    <ul>
-                        <li>We do not store your game ID or password.</li>
-                        <li>This tool operates only locally on your device.</li>
-                        <li>We do not sell or share your information with any third parties.</li>
-                    </ul>
-                    <p> This policy may change at any time, so we recommend checking it regularly.</p>
-                `;
-                
-            } else if (type === 'disclaimer') {
-                title = `<h2 class="content-title"><i class="fa-solid fa-triangle-exclamation"></i> Disclaimer</h2>`;
-                body = `
-                    <p><strong>সতর্কতা:</strong> এই ওয়েবসাইট এবং এখানকার টুলগুলো শুধুমাত্র শিক্ষামূলক এবং বিনোদনের উদ্দেশ্যে তৈরি করা হয়েছে।</p>
-                    <ul>
-                        <li>এটি কোনো অফিসিয়াল গেম ডেভেলপারদের দ্বারা অনুমোদিত নয়।</li>
-                        <li>এই টুলগুলো ব্যবহারের ফলে আপনার গেম অ্যাকাউন্টে কোনো সমস্যা হলে (যেমন: ব্যান বা সাসপেনশন), তার দায়ভার সম্পূর্ণ আপনার।</li>
-                        <li>আমরা ফেয়ার প্লে সমর্থন করি। নিজ ঝুঁকিতে ব্যবহার করুন।</li>
-                    </ul>
-                    <p>69X PRO! নিরাপদে খেলুন, দায়িত্বের সাথে খেলুন।</p>
-                `;
-            }
-
-            dynamicContentText.innerHTML = title + body;
-            window.scrollTo(0, 0);
-        }
-    </script>
-</body>
+    <div class="h-20"></div> </body>
 </html>

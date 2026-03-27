@@ -3,118 +3,132 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ATC TOPUP | Buy Mobile Recharge & Game Credits</title>
+    <title>ATC TopUp - Premium Gaming & Subscription Service</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
-        .gradient-bg { background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%); }
-        .service-card:hover { transform: translateY(-5px); transition: 0.3s; }
+        body { font-family: 'Hind Siliguri', sans-serif; background-color: #f3f6ff; }
+        .atc-red { color: #e11d48; }
+        .atc-bg-purple { background-color: #7c3aed; }
+        .service-card img { width: 80px; height: 80px; border-radius: 12px; transition: transform 0.2s; }
+        .service-card:hover img { transform: scale(1.05); }
     </style>
 </head>
-<body class="bg-gray-50">
+<body class="pb-20">
 
-    <header class="gradient-bg text-white shadow-md sticky top-0 z-50">
+    <header class="bg-white border-b sticky top-0 z-50">
         <div class="container mx-auto px-4 py-3 flex justify-between items-center">
-            <div class="flex items-center space-x-2">
-                <div class="bg-white text-blue-600 p-1 rounded font-bold text-xl">ATC</div>
-                <span class="text-xl font-bold tracking-tight">TOPUP</span>
+            <div class="flex items-center">
+                <img src="https://via.placeholder.com/150x50?text=ATC+TOPUP" alt="ATC Logo" class="h-10">
             </div>
-            <nav class="hidden md:flex space-x-6 font-medium">
-                <a href="#" class="hover:text-blue-200">Home</a>
-                <a href="#" class="hover:text-blue-200">Drive Pack</a>
-                <a href="#" class="hover:text-blue-200">History</a>
-                <a href="#" class="hover:text-blue-200">Wallet</a>
-            </nav>
-            <div class="flex items-center space-x-4">
-                <i class="fa-solid fa-bell cursor-pointer"></i>
-                <div class="w-8 h-8 bg-blue-400 rounded-full flex items-center justify-center">
-                    <i class="fa-solid fa-user text-sm"></i>
+            <div class="flex items-center space-x-6">
+                <a href="#" class="font-semibold text-gray-700">Topup</a>
+                <a href="#" class="font-semibold text-gray-700">Contact Us</a>
+                <div class="bg-indigo-600 text-white px-4 py-1.5 rounded-full flex items-center space-x-2">
+                    <i class="fa-solid fa-wallet text-sm"></i>
+                    <span class="font-bold text-sm">৳ ০ট</span>
+                </div>
+                <div class="w-10 h-10 rounded-full overflow-hidden border-2 border-indigo-200">
+                    <img src="https://via.placeholder.com/40" alt="User">
                 </div>
             </div>
         </div>
     </header>
 
-    <section class="gradient-bg text-white pb-20 pt-10 px-4 rounded-b-[40px]">
-        <div class="container mx-auto text-center">
-            <p class="text-blue-100 text-sm mb-1">Current Balance</p>
-            <h2 class="text-4xl font-bold mb-6">৳ 2,450.00</h2>
-            <div class="flex justify-center space-x-4">
-                <button class="bg-white text-blue-600 px-6 py-2 rounded-full font-bold shadow-lg">Add Money</button>
-                <button class="bg-blue-500 border border-blue-300 px-6 py-2 rounded-full font-bold">My Profile</button>
+    <div class="container mx-auto px-4 mt-4">
+        <div class="bg-indigo-500 text-white px-4 py-3 rounded-lg flex justify-between items-center text-sm">
+            <div class="flex items-center space-x-2">
+                <span class="font-bold">Notice:</span>
+                <p>এখানে আমাদের সাইটে রাত দিন ২৪ ঘণ্টা অর্ডার করতে পারবেন। ধন্যবাদ। যে কোন সমস্যায় Telegram @ATC_Topup</p>
             </div>
-        </div>
-    </section>
-
-    <main class="container mx-auto px-4 -mt-10">
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-            <div class="bg-white p-6 rounded-2xl shadow-sm text-center service-card border border-gray-100">
-                <div class="text-blue-600 text-3xl mb-2"><i class="fa-solid fa-mobile-screen"></i></div>
-                <p class="font-semibold text-gray-700">Recharge</p>
-            </div>
-            <div class="bg-white p-6 rounded-2xl shadow-sm text-center service-card border border-gray-100">
-                <div class="text-orange-500 text-3xl mb-2"><i class="fa-solid fa-bolt"></i></div>
-                <p class="font-semibold text-gray-700">Drive Pack</p>
-            </div>
-            <div class="bg-white p-6 rounded-2xl shadow-sm text-center service-card border border-gray-100">
-                <div class="text-green-500 text-3xl mb-2"><i class="fa-solid fa-gamepad"></i></div>
-                <p class="font-semibold text-gray-700">Game Topup</p>
-            </div>
-            <div class="bg-white p-6 rounded-2xl shadow-sm text-center service-card border border-gray-100">
-                <div class="text-purple-600 text-3xl mb-2"><i class="fa-solid fa-receipt"></i></div>
-                <p class="font-semibold text-gray-700">Bill Pay</p>
-            </div>
-        </div>
-
-        <div class="mt-10">
-            <div class="flex justify-between items-center mb-4">
-                <h3 class="text-lg font-bold text-gray-800">Hot Offers (Drive Packs)</h3>
-                <a href="#" class="text-blue-600 text-sm font-semibold">View All</a>
-            </div>
-            
-            <div class="space-y-3">
-                <div class="bg-white p-4 rounded-xl shadow-sm flex justify-between items-center border-l-4 border-blue-600">
-                    <div>
-                        <h4 class="font-bold text-gray-800">GP 40GB + 800 Min</h4>
-                        <p class="text-xs text-gray-500">Validity: 30 Days</p>
-                    </div>
-                    <div class="text-right">
-                        <p class="text-blue-600 font-bold text-lg">৳ 499</p>
-                        <button class="bg-blue-100 text-blue-600 px-3 py-1 rounded text-xs font-bold mt-1">Buy Now</button>
-                    </div>
-                </div>
-
-                <div class="bg-white p-4 rounded-xl shadow-sm flex justify-between items-center border-l-4 border-red-500">
-                    <div>
-                        <h4 class="font-bold text-gray-800">Robi 50GB Internet</h4>
-                        <p class="text-xs text-gray-500">Validity: 30 Days</p>
-                    </div>
-                    <div class="text-right">
-                        <p class="text-red-500 font-bold text-lg">৳ 380</p>
-                        <button class="bg-red-50 text-red-500 px-3 py-1 rounded text-xs font-bold mt-1">Buy Now</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </main>
-
-    <div class="md:hidden fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 flex justify-around py-3">
-        <div class="text-blue-600 flex flex-col items-center">
-            <i class="fa-solid fa-house"></i>
-            <span class="text-[10px]">Home</span>
-        </div>
-        <div class="text-gray-400 flex flex-col items-center">
-            <i class="fa-solid fa-list"></i>
-            <span class="text-[10px]">Orders</span>
-        </div>
-        <div class="text-gray-400 flex flex-col items-center">
-            <i class="fa-solid fa-wallet"></i>
-            <span class="text-[10px]">Wallet</span>
-        </div>
-        <div class="text-gray-400 flex flex-col items-center">
-            <i class="fa-solid fa-headset"></i>
-            <span class="text-[10px]">Support</span>
+            <button class="text-white opacity-80 hover:opacity-100"><i class="fa-solid fa-xmark"></i></button>
         </div>
     </div>
 
-    <div class="h-20"></div> </body>
+    <div class="container mx-auto px-4 mt-6">
+        <div class="relative w-full rounded-2xl overflow-hidden shadow-xl border-4 border-white">
+            <img src="https://via.placeholder.com/1200x400?text=ATC+Topup+Welcome+Banner" class="w-full object-cover">
+            <div class="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2">
+                <div class="w-2 h-2 bg-gray-800 rounded-full"></div>
+                <div class="w-2 h-2 bg-gray-400 rounded-full"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container mx-auto px-4 mt-12 text-center">
+        <h2 class="text-3xl font-bold text-gray-800 border-b-2 border-indigo-100 pb-4 inline-block px-10">Special Offer</h2>
+        <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6 mt-8">
+            <div class="service-card flex flex-col items-center cursor-pointer">
+                <img src="https://via.placeholder.com/100/4c1d95/FFFFFF?text=Weekly" alt="Weekly">
+                <p class="mt-2 text-sm font-semibold text-gray-700">Weekly Offer</p>
+            </div>
+            <div class="service-card flex flex-col items-center cursor-pointer">
+                <img src="https://via.placeholder.com/100/4c1d95/FFFFFF?text=Monthly" alt="Monthly">
+                <p class="mt-2 text-sm font-semibold text-gray-700">Monthly Offer</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="container mx-auto px-4 mt-16 text-center">
+        <h2 class="text-3xl font-bold text-gray-800 border-b-2 border-indigo-100 pb-4 inline-block px-10">Free Fire</h2>
+        <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6 mt-8">
+            <div class="service-card flex flex-col items-center cursor-pointer">
+                <img src="https://via.placeholder.com/100/4c1d95/FFFFFF?text=UID" alt="ID Code">
+                <p class="mt-2 text-xs font-semibold text-gray-700">Free Fire TopUp (BD)</p>
+            </div>
+            <div class="service-card flex flex-col items-center cursor-pointer">
+                <img src="https://via.placeholder.com/100/4c1d95/FFFFFF?text=Pass" alt="Pass">
+                <p class="mt-2 text-xs font-semibold text-gray-700">New Level Up Pass</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="container mx-auto px-4 mt-16 text-center">
+        <h2 class="text-3xl font-bold text-gray-800 border-b-2 border-indigo-100 pb-4 inline-block px-10">Subscription Service</h2>
+        <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6 mt-8">
+            <div class="service-card flex flex-col items-center cursor-pointer">
+                <img src="https://via.placeholder.com/100/FF0000/FFFFFF?text=YouTube" alt="YouTube">
+                <p class="mt-2 text-xs font-semibold text-gray-700">YouTube Premium</p>
+            </div>
+            <div class="service-card flex flex-col items-center cursor-pointer">
+                <img src="https://via.placeholder.com/100/00C4CC/FFFFFF?text=Canva" alt="Canva">
+                <p class="mt-2 text-xs font-semibold text-gray-700">Canva Pro</p>
+            </div>
+            <div class="service-card flex flex-col items-center cursor-pointer">
+                <img src="https://via.placeholder.com/100/E50914/FFFFFF?text=Netflix" alt="Netflix">
+                <p class="mt-2 text-xs font-semibold text-gray-700">Netflix</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="container mx-auto px-4 mt-20">
+        <div class="bg-white rounded-2xl shadow-sm border p-6 max-w-4xl mx-auto">
+            <div class="text-center mb-6">
+                <h3 class="text-2xl font-bold text-gray-800 uppercase tracking-wider">Latest Orders</h3>
+                <p class="text-gray-500 text-sm">সবচেয়ে সাম্প্রতিক ১০টি অর্ডার এক নজরে</p>
+            </div>
+            <div class="space-y-4">
+                <div class="flex justify-between items-center p-3 bg-gray-50 rounded-xl border border-gray-100">
+                    <div class="flex items-center space-x-3">
+                        <img src="https://via.placeholder.com/40" class="rounded-full">
+                        <div>
+                            <p class="font-bold text-gray-800">Prokash Barmon</p>
+                            <p class="text-xs text-gray-500">25 Diamond - ৳20</p>
+                        </div>
+                    </div>
+                    <span class="bg-green-500 text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase">Completed</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="fixed bottom-6 right-6 flex items-center space-x-2">
+        <div class="bg-red-500 text-white px-4 py-2 rounded-lg font-bold shadow-lg text-sm">সাহায্য লাগবে ?</div>
+        <div class="bg-red-500 w-12 h-12 rounded-full flex items-center justify-center text-white text-xl shadow-lg cursor-pointer">
+            <i class="fa-solid fa-phone"></i>
+        </div>
+    </div>
+
+</body>
 </html>

@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> NEXT HIDDEN ELITE - NHE</title>
+    <title>NEXT HIDDEN ELITE - NHE</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Rajdhani:wght@500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Rajdhani:wght@500;700&family=Hind+Siliguri:wght@400;700&display=swap" rel="stylesheet">
 
     <style>
         /* --- Global Styles & Reset --- */
@@ -19,7 +19,7 @@
 
         body {
             margin: 0;
-            font-family: 'Poppins', sans-serif;
+            font-family: 'Poppins', 'Hind Siliguri', sans-serif;
             background-color: var(--bg-dark);
             color: var(--text-light);
             overflow-x: hidden;
@@ -28,7 +28,7 @@
         a { text-decoration: none; color: inherit; }
         ul { list-style: none; padding: 0; margin: 0; }
 
-        /* --- Top Navigation Bar (Updated UI) --- */
+        /* --- Top Navigation Bar --- */
         .navbar {
             background: rgba(10, 14, 23, 0.95);
             backdrop-filter: blur(10px);
@@ -54,7 +54,7 @@
 
         .nav-links {
             display: flex;
-            gap: 20px;
+            gap: 15px;
             align-items: center;
         }
 
@@ -72,22 +72,19 @@
         .nav-item i { font-size: 1.1rem; color: var(--primary-color); }
         .nav-item:hover { background: rgba(0, 242, 234, 0.1); color: var(--primary-color); }
 
-        /* Specific Social Icons Colors */
+        /* Social Icons */
         .discord-link i { color: #5865F2; }
         .youtube-link i { color: #FF0000; }
-        .discord-link:hover { background: rgba(88, 101, 242, 0.2); color: #5865F2 !important; }
-        .youtube-link:hover { background: rgba(255, 0, 0, 0.2); color: #FF0000 !important; }
 
-
-        /* --- Main Hero Header --- */
+        /* --- Hero Header --- */
         .hero-header {
             text-align: center;
-            padding: 80px 20px 40px;
+            padding: 60px 20px 30px;
             background: radial-gradient(circle at center, #1a233a 0%, #0a0e17 70%);
         }
         .hero-header h1 {
             font-family: 'Rajdhani', sans-serif;
-            font-size: 4rem;
+            font-size: clamp(2.5rem, 8vw, 4rem);
             margin: 0;
             text-transform: uppercase;
             background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
@@ -95,9 +92,9 @@
             -webkit-text-fill-color: transparent;
             text-shadow: 0 0 20px rgba(0, 242, 234, 0.4);
         }
-        .hero-header p { font-size: 1.2rem; color: #94a3b8; margin-top: 10px; }
+        .hero-header p { font-size: 1.1rem; color: #94a3b8; margin-top: 10px; }
 
-        /* --- Grid Container for Panels --- */
+        /* --- Panel Cards --- */
         .panel-container {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -113,7 +110,6 @@
             border-radius: 20px;
             text-align: center;
             border: 1px solid rgba(255, 255, 255, 0.05);
-            box-shadow: 0 10px 30px -10px rgba(0,0,0,0.5);
             transition: all 0.4s ease;
             position: relative;
             overflow: hidden;
@@ -126,7 +122,6 @@
             top: 0; left: 0; width: 100%; height: 3px;
             background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
             transform: scaleX(0);
-            transform-origin: left;
             transition: transform 0.4s ease;
         }
 
@@ -145,94 +140,75 @@
         .panel-card h3 { font-family: 'Rajdhani', sans-serif; font-size: 1.5rem; margin: 10px 0; }
         .panel-card p { color: #94a3b8; font-size: 0.9rem; }
 
-        /* --- Hidden Content Area (Privacy/Disclaimer) --- */
+        /* --- Content Area --- */
         #content-display-area {
-            display: none; /* Hidden by default */
+            display: none;
             max-width: 800px;
             margin: 40px auto;
             padding: 40px;
             background: var(--bg-card);
             border-radius: 20px;
             border: 1px solid rgba(0, 242, 234, 0.2);
-            box-shadow: 0 0 30px rgba(0,0,0,0.5);
         }
-        
+
         .content-title {
             font-family: 'Rajdhani', sans-serif;
             font-size: 2rem;
             color: var(--primary-color);
             margin-bottom: 20px;
-            border-bottom: 2px solid rgba(255,255,255,0.1);
+            border-bottom: 1px solid rgba(255,255,255,0.1);
             padding-bottom: 15px;
         }
-        .content-body { line-height: 1.8; color: #ccc; text-align: left; }
-        .content-body li { margin-bottom: 10px; list-style: square; margin-left: 20px; }
 
         .back-button {
             background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
             border: none;
-            padding: 12px 25px;
+            padding: 10px 20px;
             color: #fff;
             font-weight: bold;
             border-radius: 30px;
             cursor: pointer;
-            margin-bottom: 30px;
+            margin-bottom: 20px;
             display: inline-flex;
             align-items: center;
             gap: 10px;
-            transition: 0.3s;
         }
-        .back-button:hover { filter: brightness(1.2); transform: scale(1.05); }
 
         /* --- Footer --- */
         footer {
             text-align: center;
             padding: 30px;
-            background: #070a11;
             color: #64748b;
             font-size: 0.85rem;
             border-top: 1px solid rgba(255,255,255,0.05);
         }
 
-        /* --- Mobile Responsive --- */
         @media (max-width: 900px) {
-            .navbar { flex-direction: column; padding: 15px; }
-            .brand-logo { margin-bottom: 15px; }
-            .nav-links { flex-wrap: wrap; justify-content: center; gap: 10px; }
-            .hero-header h1 { font-size: 2.5rem; }
+            .navbar { flex-direction: column; gap: 15px; }
+            .nav-links { flex-wrap: wrap; justify-content: center; }
         }
     </style>
 </head>
 <body>
 
     <nav class="navbar">
-        <div class="brand-logo">
-            N<span>H</span>E
-        </div>
-
+        <div class="brand-logo">N<span>H</span>E</div>
         <ul class="nav-links">
             <li><a class="nav-item" onclick="showHome()"><i class="fa-solid fa-house"></i> Home</a></li>
             <li><a class="nav-item" onclick="showContent('privacy')"><i class="fa-solid fa-shield-halved"></i> Privacy</a></li>
             <li><a class="nav-item" onclick="showContent('disclaimer')"><i class="fa-solid fa-triangle-exclamation"></i> Disclaimer</a></li>
-            <li><a class="nav-item"><i class="fa-solid fa-wand-magic-sparkles"></i> Update</a></li>
             
-            <li>
-                <a href="https://discord.gg/2qNzUt3Z" target="_blank" class="nav-item discord-link">
-                    <i class="fa-brands fa-discord"></i> Discord
-                </a>
-            </li>
-            <li>
-                <a href="https://www.youtube.com/@NAZIM69x" target="_blank" class="nav-item youtube-link">
-                    <i class="fa-brands fa-youtube"></i> YouTube
-                </a>
-            </li>
+            <li><a class="nav-item" onclick="showContent('update')"><i class="fa-solid fa-wand-magic-sparkles"></i> Update</a></li>
+            
+            <li><a href="https://discord.gg/2qNzUt3Z" target="_blank" class="nav-item discord-link"><i class="fa-brands fa-discord"></i> Discord</a></li>
+            <li><a href="https://www.youtube.com/@NAZIM69x" target="_blank" class="nav-item youtube-link"><i class="fa-brands fa-youtube"></i> YouTube</a></li>
         </ul>
     </nav>
 
-  <main id="main-content">
+    <main id="main-content">
         <header class="hero-header">
             <h1>NEXT HIDDEN ELITE</h1>
-            <p>Improve game play.</p>
+            <p>Improve game play with precision.</p>
         </header>
 
         <div class="panel-container">
@@ -255,21 +231,23 @@
                 <i class="fa-solid fa-crown card-icon" style="color: #ffd700;"></i>
                 <h3>NHE PREMIUM V1</h3>
                 <p>Unlock premium power and exclusive tools.</p>
-        </div>
-             <div class="panel-card">
-                <i class="fa-solid fa-crown card-icon" style="color: #ffd700;"></i>
-                 <i class="fa-solid fa-crown card-icon" style="color: #ffd700;"></i>
+            </div>
+            <div class="panel-card">
+                <div style="display: flex; justify-content: center; gap: 5px;">
+                    <i class="fa-solid fa-crown card-icon" style="color: #ffd700;"></i>
+                    <i class="fa-solid fa-crown card-icon" style="color: #ffd700;"></i>
+                </div>
                 <h3>NHE PREMIUM V2</h3>
-                <p>Unlock premium power and exclusive tools.</p>
+                <p>The ultimate gaming experience awaits.</p>
+            </div>
         </div>
     </main>
 
     <section id="content-display-area">
         <button class="back-button" onclick="showHome()">
-            <i class="fa-solid fa-arrow-left"></i> Back to Panel
+            <i class="fa-solid fa-arrow-left"></i> Back to Home
         </button>
-        <div id="dynamic-content-text" class="content-body">
-            </div>
+        <div id="dynamic-content-text" class="content-body"></div>
     </section>
 
     <footer>
@@ -277,19 +255,16 @@
     </footer>
 
     <script>
-        // এলিমেন্টগুলো ধরে রাখা
         const mainContentDiv = document.getElementById('main-content');
         const contentDisplayArea = document.getElementById('content-display-area');
         const dynamicContentText = document.getElementById('dynamic-content-text');
 
-        // হোম পেজে ফিরে আসার ফাংশন
         function showHome() {
             mainContentDiv.style.display = 'block';
             contentDisplayArea.style.display = 'none';
-            window.scrollTo(0, 0); // পেজের উপরে নিয়ে যাবে
+            window.scrollTo(0, 0);
         }
 
-        // প্রাইভেসি বা ডিসক্লেমার দেখানোর ফাংশন
         function showContent(type) {
             mainContentDiv.style.display = 'none';
             contentDisplayArea.style.display = 'block';
@@ -300,25 +275,28 @@
             if (type === 'privacy') {
                 title = `<h2 class="content-title"><i class="fa-solid fa-shield-halved"></i> Privacy Policy</h2>`;
                 body = `
-                    <p>Your gaming safety is our top priority. Below is how your data is handled while using the NHE PANEL:</p>
-                    <ul>
+                    <p>Your gaming safety is our top priority. Below is how your data is handled:</p>
+                    <ul style="margin-left: 20px; line-height: 1.8;">
                         <li>We do not store your game ID or password.</li>
                         <li>This tool operates only locally on your device.</li>
-                        <li>We do not sell or share your information with any third parties.</li>
+                        <li>We do not share your information with any third parties.</li>
                     </ul>
-                    <p> This policy may change at any time, so we recommend checking it regularly.</p>
                 `;
-                
             } else if (type === 'disclaimer') {
                 title = `<h2 class="content-title"><i class="fa-solid fa-triangle-exclamation"></i> Disclaimer</h2>`;
                 body = `
-                    <p><strong>সতর্কতা:</strong> এই ওয়েবসাইট এবং এখানকার টুলগুলো শুধুমাত্র শিক্ষামূলক এবং বিনোদনের উদ্দেশ্যে তৈরি করা হয়েছে।</p>
-                    <ul>
-                        <li>এটি কোনো অফিসিয়াল গেম ডেভেলপারদের দ্বারা অনুমোদিত নয়।</li>
-                        <li>এই টুলগুলো ব্যবহারের ফলে আপনার গেম অ্যাকাউন্টে কোনো সমস্যা হলে (যেমন: ব্যান বা সাসপেনশন), তার দায়ভার সম্পূর্ণ আপনার।</li>
-                        <li>আমরা ফেয়ার প্লে সমর্থন করি। নিজ ঝুঁকিতে ব্যবহার করুন।</li>
-                    </ul>
-                    <p>69X PRO! নিরাপদে খেলুন, দায়িত্বের সাথে খেলুন।</p>
+                    <p style="color: #ff4d4d;"><strong>সতর্কতা:</strong></p>
+                    <p>এই টুলগুলো শুধুমাত্র বিনোদনের উদ্দেশ্যে তৈরি। এটি ব্যবহারের ফলে আপনার অ্যাকাউন্টে কোনো সমস্যা হলে কর্তৃপক্ষ দায়ী থাকবে না। নিজ ঝুঁকিতে ব্যবহার করুন।</p>
+                `;
+            } else if (type === 'update') {
+                title = `<h2 class="content-title"><i class="fa-solid fa-wand-magic-sparkles"></i> System Update</h2>`;
+                body = `
+                    <div style="text-align: center; padding: 20px;">
+                        <i class="fa-solid fa-circle-check" style="font-size: 50px; color: var(--primary-color); margin-bottom: 15px;"></i>
+                        <h3>You are Up to Date!</h3>
+                        <p>Current Version: <strong>NHE-V1.0.5 (Stable)</strong></p>
+                        <p style="color: #94a3b8; font-size: 0.9rem;">নতুন কোনো আপডেট আসলে টেলিগ্রাম বা ডিসকর্ড চ্যানেলে জানানো হবে।</p>
+                    </div>
                 `;
             }
 

@@ -1,819 +1,357 @@
 <!DOCTYPE html>
-<html lang="bn">
+<html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NEXT HIDDEN ELITE - NHE</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Rajdhani:wght@500;700&family=Hind+Siliguri:wght@400;700&display=swap" rel="stylesheet">
-
-    <style>
-        /* --- Global Styles & Reset --- */
-        :root {
-            --primary-color: #00f2ea;
-            --secondary-color: #ff0055;
-            --mobile-color: #7cfc00;
-            --premium-v2-color: #ffaa00;
-            --pubg-color: #f3ae1a;
-            --cod-color: #ffffff;
-            --bg-dark: #0a0e17;
-            --bg-card: #121a2b;
-            --text-light: #e2e8f0;
-        }
-
-        body {
-            margin: 0;
-            font-family: 'Poppins', 'Hind Siliguri', sans-serif;
-            background-color: var(--bg-dark);
-            color: var(--text-light);
-            overflow-x: hidden;
-        }
-
-        a { text-decoration: none; color: inherit; }
-        ul { list-style: none; padding: 0; margin: 0; }
-
-        /* --- Top Navigation Bar --- */
-        .navbar {
-            background: rgba(10, 14, 23, 0.95);
-            backdrop-filter: blur(10px);
-            padding: 15px 30px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            border-bottom: 2px solid rgba(0, 242, 234, 0.1);
-        }
-
-        .brand-logo {
-            font-family: 'Rajdhani', sans-serif;
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--text-light);
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
-        .brand-logo span { color: var(--primary-color); }
-
-        .nav-links { display: flex; gap: 15px; align-items: center; }
-        .nav-item {
-            font-size: 0.9rem;
-            font-weight: 500;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            padding: 8px 12px;
-            border-radius: 5px;
-        }
-        .nav-item i { font-size: 1.1rem; color: var(--primary-color); }
-        .nav-item:hover { background: rgba(0, 242, 234, 0.1); color: var(--primary-color); }
-
-        .discord-link i { color: #5865F2; }
-        .youtube-link i { color: #FF0000; }
-
-        /* --- Hero Header --- */
-        .hero-header {
-            text-align: center;
-            padding: 60px 20px 30px;
-            background: radial-gradient(circle at center, #1a233a 0%, #0a0e17 70%);
-        }
-        .hero-header h1 {
-            font-family: 'Rajdhani', sans-serif;
-            font-size: clamp(2.5rem, 8vw, 4rem);
-            margin: 0;
-            text-transform: uppercase;
-            background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            text-shadow: 0 0 20px rgba(0, 242, 234, 0.4);
-        }
-        .hero-header p { font-size: 1.1rem; color: #94a3b8; margin-top: 10px; }
-
-        /* --- Section Titles --- */
-        .section-title {
-            text-align: center;
-            font-family: 'Rajdhani', sans-serif;
-            font-size: 1.8rem;
-            margin: 40px 0 20px;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            color: var(--text-light);
-            position: relative;
-        }
-        .section-title::after {
-            content: '';
-            display: block;
-            width: 60px;
-            height: 3px;
-            background: var(--primary-color);
-            margin: 10px auto;
-        }
-
-        /* --- Panel Cards --- */
-        .panel-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 25px;
-            max-width: 1200px;
-            margin: 0 auto 30px;
-            padding: 20px;
-        }
-
-        .panel-card {
-            background: var(--bg-card);
-            padding: 35px 25px;
-            border-radius: 20px;
-            text-align: center;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            transition: all 0.4s ease;
-            position: relative;
-            overflow: hidden;
-            cursor: pointer;
-        }
-
-        .panel-card::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 3px;
-            background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
-            transform: scaleX(0);
-            transition: transform 0.4s ease;
-        }
-
-        .panel-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px -15px rgba(0, 242, 234, 0.2);
-        }
-        .panel-card:hover::before { transform: scaleX(1); }
-
-        .card-icon {
-            font-size: 3rem;
-            margin-bottom: 20px;
-            color: var(--primary-color);
-            text-shadow: 0 0 15px var(--primary-color);
-        }
-
-        .icon-v2 {
-            color: var(--premium-v2-color);
-            text-shadow: 0 0 25px rgba(255, 170, 0, 0.6);
-            animation: pulse-gold 2s infinite;
-        }
-        @keyframes pulse-gold {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-            100% { transform: scale(1); }
-        }
-
-        .panel-card h3 {
-            font-family: 'Rajdhani', sans-serif;
-            font-size: 1.3rem;
-            margin: 10px 0;
-        }
-        .panel-card p { color: #94a3b8; font-size: 0.85rem; }
-
-        /* User Counter Styling (New) */
-        .user-counter {
-            position: absolute;
-            top: 15px;
-            left: 15px;
-            font-size: 0.75rem;
-            color: #7cfc00;
-            display: flex;
-            align-items: center;
-            gap: 5px;
-            font-weight: bold;
-            background: rgba(0,0,0,0.5);
-            padding: 3px 8px;
-            border-radius: 20px;
-        }
-        .live-dot {
-            height: 8px;
-            width: 8px;
-            background-color: #7cfc00;
-            border-radius: 50%;
-            display: inline-block;
-            animation: pulse-green 1.5s infinite;
-        }
-        @keyframes pulse-green {
-            0% { box-shadow: 0 0 0 0 rgba(124, 252, 0, 0.7); }
-            70% { box-shadow: 0 0 0 6px rgba(124, 252, 0, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(124, 252, 0, 0); }
-        }
-
-        /* --- Content & Download Area --- */
-        #content-display-area {
-            display: none;
-            max-width: 800px;
-            margin: 40px auto;
-            padding: 40px;
-            background: var(--bg-card);
-            border-radius: 20px;
-            border: 1px solid rgba(0, 242, 234, 0.2);
-        }
-
-        .content-title {
-            font-family: 'Rajdhani', sans-serif;
-            font-size: 2rem;
-            color: var(--primary-color);
-            margin-bottom: 20px;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
-            padding-bottom: 15px;
-            text-align: center;
-        }
-
-        .back-button {
-            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
-            border: none;
-            padding: 10px 20px;
-            color: #fff;
-            font-weight: bold;
-            border-radius: 30px;
-            cursor: pointer;
-            margin-bottom: 20px;
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        /* --- Updated Box Styles (Privacy, Disclaimer, Update) --- */
-        .info-card-box {
-            background: rgba(0, 242, 234, 0.05);
-            padding: 25px;
-            border-left: 4px solid var(--primary-color);
-            border-radius: 12px;
-            margin-top: 20px;
-            text-align: left;
-            animation: fadeIn 0.6s ease;
-            position: relative;
-            overflow: hidden;
-        }
-        .info-card-list { list-style: none; padding: 0; }
-        .info-card-list li {
-            margin-bottom: 12px;
-            display: flex;
-            align-items: flex-start;
-            gap: 12px;
-            font-size: 0.95rem;
-            line-height: 1.5;
-        }
-        .info-card-list li i { margin-top: 4px; }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        /* --- NEW EFFECTS (Scanner, Shield) --- */
-        
-        /* Scanning effect */
-        .scan-effect::after {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 2px;
-            background: var(--primary-color);
-            box-shadow: 0 0 10px var(--primary-color);
-            animation: scanning 2s linear infinite;
-            opacity: 0.5;
-        }
-        @keyframes scanning {
-            0% { top: 0; }
-            100% { top: 100%; }
-        }
-
-        /* Secure Shield Rotation */
-        .secure-shield {
-            animation: shieldRotate 4s linear infinite;
-            display: inline-block;
-        }
-        @keyframes shieldRotate {
-            0% { transform: rotateY(0deg); opacity: 1; }
-            50% { transform: rotateY(180deg); opacity: 0.7; }
-            100% { transform: rotateY(360deg); opacity: 1; }
-        }
-
-        /* --- OTHERS PANEL CUSTOM STYLES --- */
-        .others-panel-box {
-            background: linear-gradient(135deg, rgba(10, 14, 23, 0.98), rgba(18, 26, 43, 0.98));
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(0, 242, 234, 0.2);
-            box-shadow: 0 0 30px rgba(0, 242, 234, 0.1);
-            position: relative;
-            overflow: hidden;
-            padding: 30px;
-            border-radius: 15px;
-            margin-top: 20px;
-            animation: fadeIn 0.8s ease;
-        }
-
-        .others-panel-box::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background-image: 
-                linear-gradient(rgba(0, 242, 234, 0.05) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(0, 242, 234, 0.05) 1px, transparent 1px);
-            background-size: 20px 20px;
-            z-index: 0;
-            opacity: 0.5;
-        }
-
-        .others-content-wrapper { position: relative; z-index: 1; }
-
-        .others-games-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 15px;
-            margin-bottom: 25px;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            background: rgba(0, 0, 0, 0.2);
-            border-radius: 8px;
-            padding: 15px;
-        }
-
-        .other-game-card {
-            background: #101624;
-            padding: 20px 15px;
-            border-radius: 10px;
-            border: 1px solid rgba(255,255,255,0.03);
-            text-align: center;
-            transition: 0.3s;
-            cursor: pointer;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            position: relative; /* Added for user counter */
-        }
-        .other-game-card:hover {
-            transform: translateY(-5px) scale(1.02);
-            border-color: var(--primary-color);
-            background: #121a2b;
-            box-shadow: 0 10px 20px rgba(0, 242, 234, 0.1);
-        }
-        
-        .other-game-icon {
-            font-size: 2.5rem;
-            margin-bottom: 15px;
-            color: #fff;
-            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
-            transition: 0.3s;
-        }
-        .other-game-card:hover .other-game-icon {
-            color: var(--primary-color);
-            text-shadow: 0 0 15px var(--primary-color);
-        }
-
-        .other-game-card .other-game-name { color: #fff; font-size: 0.95rem; font-weight: bold; margin-bottom: 5px; text-transform: uppercase; }
-        .other-game-card .other-game-desc { color: #94a3b8; font-size: 0.8rem; margin: 0; }
-
-        /* --- Payment & Free Box Styles (Needed for dynamic innerHTML) --- */
-        .free-download-box { text-align: center; padding: 20px; }
-        .pc-panel-title {
-            font-size: 2.8rem;
-            font-weight: 800;
-            color: #fff;
-            text-transform: uppercase;
-            margin-bottom: 15px;
-            background: linear-gradient(90deg, #00f2ea, #ff0055);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            text-shadow: 0 0 15px rgba(0, 242, 234, 0.3);
-            font-family: 'Rajdhani', sans-serif;
-        }
-        .panel-version { font-size: 1.3rem; color: #94a3b8; margin-bottom: 25px; font-weight: 500; }
-        .download-btn {
-            display: inline-block;
-            background: linear-gradient(45deg, #ff0055, #ffaa00);
-            color: #fff !important;
-            padding: 15px 40px;
-            font-size: 1.2rem;
-            font-weight: bold;
-            border-radius: 50px;
-            text-transform: uppercase;
-            box-shadow: 0 10px 20px rgba(255, 0, 85, 0.3);
-            transition: 0.3s;
-            margin-bottom: 20px;
-            cursor: pointer;
-            border: none;
-            text-decoration: none;
-        }
-        .download-btn:hover { transform: scale(1.1) rotate(-2deg); box-shadow: 0 15px 30px rgba(255, 0, 85, 0.5); }
-        .rar-pass { background: rgba(0,0,0,0.3); padding: 10px 20px; border-radius: 8px; border: 1px dashed var(--primary-color); display: inline-block; color: var(--primary-color); font-weight: bold; }
-        @keyframes rgb-light {
-            0% { color: #ff0000; text-shadow: 0 0 10px #ff0000; }
-            33% { color: #00ff00; text-shadow: 0 0 10px #00ff00; }
-            66% { color: #0000ff; text-shadow: 0 0 10px #0000ff; }
-            100% { color: #ff0000; text-shadow: 0 0 10px #ff0000; }
-        }
-        .danger-text { font-size: 2rem; font-weight: 900; margin-top: 35px; letter-spacing: 5px; animation: rgb-light 2s infinite; font-family: 'Rajdhani', sans-serif; display: flex; align-items: center; justify-content: center; gap: 15px; }
-        .payment-container { text-align: center; }
-        .price-tag { font-size: 2.5rem; font-weight: 700; color: #fff; margin: 10px 0; text-shadow: 0 0 10px var(--primary-color); }
-        .payment-methods { display: flex; justify-content: center; gap: 20px; margin: 25px 0; flex-wrap: wrap; }
-        .method-card { background: #fff; padding: 5px; border-radius: 12px; width: 110px; height: 60px; display: flex; align-items: center; justify-content: center; transition: 0.3s; overflow: hidden; }
-        .method-card img { max-width: 90%; max-height: 90%; object-fit: contain; }
-        .trx-input { width: 100%; max-width: 400px; padding: 15px; border-radius: 10px; border: 1px solid #333; background: #0a0e17; color: #fff; text-align: center; margin-bottom: 15px; font-size: 1rem; }
-        .buy-now-btn { background: #00ff88; color: #000; font-weight: bold; padding: 15px 40px; border-radius: 10px; border: none; cursor: pointer; width: 100%; max-width: 400px; font-size: 1.1rem; }
-
-        /* --- SUBSCRIPTION PLANS STYLES --- */
-        .subscription-plans {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            margin-bottom: 20px;
-            flex-wrap: wrap;
-        }
-
-        .plan-btn {
-            background: transparent;
-            border: 1px solid rgba(0, 242, 234, 0.3);
-            color: var(--text-light);
-            padding: 8px 15px;
-            border-radius: 30px;
-            font-size: 0.85rem;
-            cursor: pointer;
-            transition: 0.3s;
-            font-weight: 500;
-        }
-
-        .plan-btn:hover {
-            background: rgba(0, 242, 234, 0.1);
-            border-color: var(--primary-color);
-        }
-
-        .plan-btn.active {
-            background: var(--primary-color);
-            color: #000;
-            border-color: var(--primary-color);
-            font-weight: bold;
-            box-shadow: 0 0 10px var(--primary-color);
-        }
-
-        @media (max-width: 900px) {
-            .navbar { flex-direction: column; gap: 15px; }
-            .nav-links { flex-wrap: wrap; justify-content: center; }
-        }
-    </style>
+    <title>API Documentation - TSun Ban Check</title>
+    <meta name="description"
+        content="Complete API documentation for FreeFire BanCheck API with interactive examples and source code">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="/static/docs.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css">
 </head>
-<body>
 
+<body>
     <nav class="navbar">
-        <div class="brand-logo">N<span>H</span>E</div>
-        <ul class="nav-links">
-            <li><a class="nav-item" onclick="showHome()"><i class="fa-solid fa-house"></i> Home</a></li>
-            <li><a class="nav-item" onclick="showContent('privacy')"><i class="fa-solid fa-shield-halved"></i> Privacy</a></li>
-            <li><a class="nav-item" onclick="showContent('disclaimer')"><i class="fa-solid fa-triangle-exclamation"></i> Disclaimer</a></li>
-            <li><a class="nav-item" onclick="showContent('update')"><i class="fa-solid fa-wand-magic-sparkles"></i> Update</a></li>
-            <li><a href="https://discord.gg/2qNzUt3Z" target="_blank" class="nav-item discord-link"><i class="fa-brands fa-discord"></i> Discord</a></li>
-            <li><a href="https://www.youtube.com/@NAZIM69x" target="_blank" class="nav-item youtube-link"><i class="fa-brands fa-youtube"></i> YouTube</a></li>
-        </ul>
+        <div class="nav-container">
+            <div class="nav-brand">
+                <h1><span class="emoji">🔥</span> <span class="brand-text">FreeFire BanCheck API</span></h1>
+            </div>
+            <div class="nav-links">
+                <a href="/" class="nav-link">Home</a>
+                <a href="/docs" class="nav-link active">API Docs</a>
+                <a href="https://github.com/TSun-FreeFire/TSun-FF-Bancheck" target="_blank" class="nav-link">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path
+                            d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+                    </svg>
+                    GitHub
+                </a>
+            </div>
+        </div>
     </nav>
 
-    <main id="main-content">
-        <header class="hero-header">
-            <h1>NEXT HIDDEN ELITE</h1>
-            <p>Master your game with pro-level tools.</p>
-        </header>
+    <div class="container">
+        <aside class="sidebar">
+            <div class="sidebar-section">
+                <h3>Getting Started</h3>
+                <a href="#overview" class="sidebar-link">Overview</a>
+                <a href="#features" class="sidebar-link">Features</a>
+                <a href="#installation" class="sidebar-link">Installation</a>
+            </div>
+            <div class="sidebar-section">
+                <h3>API Reference</h3>
+                <a href="#endpoint" class="sidebar-link">Endpoint</a>
+                <a href="#parameters" class="sidebar-link">Parameters</a>
+                <a href="#response" class="sidebar-link">Response</a>
+                <a href="#examples" class="sidebar-link">Examples</a>
+            </div>
+            <div class="sidebar-section">
+                <h3>Source Code</h3>
+                <a href="#source-structure" class="sidebar-link">Project Structure</a>
+            </div>
+        </aside>
 
-        <h2 class="section-title">Main Panels</h2>
-        <div class="panel-container">
-            <div class="panel-card" onclick="showPayment('MOBILE PANEL', 500)">
-                <div class="user-counter"><span class="live-dot"></span>Live Using: <span class="count">1250</span></div>
-                <i class="fa-solid fa-mobile-screen-button card-icon" style="color: var(--mobile-color);"></i>
-                <h3>MOBILE PANEL</h3>
-                <p>Features optimized for mobile.</p>
-            </div>
-            <div class="panel-card" onclick="showFreePanel()">
-                <div class="user-counter"><span class="live-dot"></span>Live Using: <span class="count">4500</span></div>
-                <i class="fa-solid fa-bolt card-icon" style="color:#00ff88;"></i>
-                <h3>FREE PANEL</h3>
-                <p>Free essential tools for everyone.</p>
-            </div>
-            <div class="panel-card" onclick="showPayment('EMULATOR BYPASS', 1200)">
-                <div class="user-counter"><span class="live-dot"></span>Live Using: <span class="count">850</span></div>
-                <i class="fa-solid fa-computer card-icon" style="color: var(--secondary-color);"></i>
-                <h3>EMULATOR BYPASS</h3>
-                <p>Play on PC without detection.</p>
-            </div>
-            <div class="panel-card" onclick="showPayment('AIMBOT HEAD', 800)">
-                <div class="user-counter"><span class="live-dot"></span>Live Using: <span class="count">3100</span></div>
-                <i class="fa-solid fa-crosshairs card-icon"></i>
-                <h3>AIMBOT HEAD</h3>
-                <p>Maximum precision targeting.</p>
-            </div>
-            <div class="panel-card" onclick="showPayment('NHE PREMIUM V1', 1000)">
-                <div class="user-counter"><span class="live-dot"></span>Live Using: <span class="count">2100</span></div>
-                <i class="fa-solid fa-crown card-icon" style="color: #ffd700;"></i>
-                <h3>NHE PREMIUM V1</h3>
-                <p>Exclusive premium features.</p>
-            </div>
-            <div class="panel-card" onclick="showPayment('NHE PREMIUM V2', 2000)">
-                <div class="user-counter"><span class="live-dot"></span>Live Using: <span class="count">1800</span></div>
-                <i class="fa-solid fa-shield-halved card-icon icon-v2"></i>
-                <h3 style="color: var(--premium-v2-color);">NHE PREMIUM V2</h3>
-                <p>Advanced protection & elite tools.</p>
+        <main class="content">
+            <section id="overview" class="section">
+                <h1 class="section-title"><span class="emoji">⚡</span> <span class="gradient-text">Overview</span></h1>
+                <p class="section-description">
+                    FreeFire BanCheck API is a lightweight Flask-based REST API that retrieves Free Fire player
+                    information with ban status.
+                    Designed for speed, precision, and integration with custom dashboards or moderation tools.
+                </p>
+                <div class="info-box">
+                    <div class="info-item">
+                        <span class="info-label">Version</span>
+                        <span class="info-value">1.0.0</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Base URL</span>
+                        <span class="info-value">https://bancheck.tsunstudio.pw</span>
+                    </div>
+                </div>
+            </section>
+
+            <section id="features" class="section">
+                <h2 class="section-title"><span class="emoji">🚀</span> <span class="gradient-text">Features</span></h2>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">👤</div>
+                        <h3>Player Information</h3>
+                        <p>Fetches player name, UID, level, and region</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🚫</div>
+                        <h3>Ban Status Check</h3>
+                        <p>Checks account ban status in real-time</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">⏰</div>
+                        <h3>Last Login Tracking</h3>
+                        <p>Calculates time since last login</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">⚡</div>
+                        <h3>Lightweight</h3>
+                        <p>100% Flask, minimal dependencies</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="installation" class="section">
+                <h2 class="section-title"><span class="emoji">🧰</span> <span class="gradient-text">Installation</span>
+                </h2>
+                <div class="code-block">
+                    <div class="code-header">
+                        <span>bash</span>
+                        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                    </div>
+                    <pre><code class="language-bash">git clone https://github.com/TSun-FreeFire/TSun-FF-Bancheck.git
+cd TSun-FF-Bancheck
+pip install -r requirements.txt
+python app.py</code></pre>
+                </div>
+                <p class="note">The local server runs on: <code>http://127.0.0.1:5000</code></p>
+            </section>
+
+            <section id="endpoint" class="section">
+                <h2 class="section-title"><span class="emoji">🧠</span> <span class="gradient-text">API Endpoint</span>
+                </h2>
+                <div class="endpoint-card">
+                    <div class="endpoint-header">
+                        <span class="method">GET</span>
+                        <span class="path">/bancheck</span>
+                    </div>
+                    <p class="endpoint-description">Retrieve player details and ban information by UID.</p>
+                </div>
+            </section>
+
+            <section id="parameters" class="section">
+                <h2 class="section-title"><span class="emoji">📋</span> <span class="gradient-text">Parameters</span>
+                </h2>
+                <table class="params-table">
+                    <thead>
+                        <tr>
+                            <th>Parameter</th>
+                            <th>Type</th>
+                            <th>Required</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code>uid</code></td>
+                            <td>string</td>
+                            <td><span class="badge badge-required">Required</span></td>
+                            <td>Free Fire player UID (User ID)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <section id="response" class="section">
+                <h2 class="section-title"><span class="emoji">📤</span> <span class="gradient-text">Response</span></h2>
+                <div class="code-block">
+                    <div class="code-header">
+                        <span>json</span>
+                        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                    </div>
+                    <pre><code class="language-json">{
+  "nickname": "MoTo^.^Kaka",
+  "uid": "2513698016",
+  "AccountLevel": 76,
+  "region": "PK",
+  "AccountLastLogin": "2025-08-21",
+  "status": "OK",
+  "is_banned": false,
+  "Last_Login": "0 Year 2 Months And 7 Days Ago",
+  "credits": "saeedxdie"
+}</code></pre>
+                </div>
+
+                <h3 class="subsection-title">Response Fields</h3>
+                <table class="params-table">
+                    <thead>
+                        <tr>
+                            <th>Field</th>
+                            <th>Type</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code>nickname</code></td>
+                            <td>string</td>
+                            <td>Player's in-game nickname</td>
+                        </tr>
+                        <tr>
+                            <td><code>uid</code></td>
+                            <td>string</td>
+                            <td>Player's unique identifier</td>
+                        </tr>
+                        <tr>
+                            <td><code>AccountLevel</code></td>
+                            <td>integer</td>
+                            <td>Player's account level</td>
+                        </tr>
+                        <tr>
+                            <td><code>region</code></td>
+                            <td>string</td>
+                            <td>Player's region (PK, BD, IND, NA, SG)</td>
+                        </tr>
+                        <tr>
+                            <td><code>AccountLastLogin</code></td>
+                            <td>string</td>
+                            <td>Last login date (YYYY-MM-DD format)</td>
+                        </tr>
+                        <tr>
+                            <td><code>status</code></td>
+                            <td>string</td>
+                            <td>API request status</td>
+                        </tr>
+                        <tr>
+                            <td><code>is_banned</code></td>
+                            <td>boolean</td>
+                            <td>Whether the account is banned</td>
+                        </tr>
+                        <tr>
+                            <td><code>Last_Login</code></td>
+                            <td>string</td>
+                            <td>Human-readable time since last login</td>
+                        </tr>
+                        <tr>
+                            <td><code>credits</code></td>
+                            <td>string</td>
+                            <td>API credits</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <section id="examples" class="section">
+                <h2 class="section-title"><span class="emoji">💡</span> <span class="gradient-text">Examples</span></h2>
+
+                <h3 class="subsection-title">URL</h3>
+                <div class="code-block">
+                    <div class="code-header">
+                        <span>bash</span>
+                        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                    </div>
+                    <pre><code class="language-bash">https://bancheck.tsunstudio.pw/bancheck?uid=2513698016</code></pre>
+                </div>
+
+                <h3 class="subsection-title">Python</h3>
+                <div class="code-block">
+                    <div class="code-header">
+                        <span>python</span>
+                        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                    </div>
+                    <pre><code class="language-python">import requests
+
+uid = "2513698016"
+response = requests.get(f"https://bancheck.tsunstudio.pw/bancheck?uid={uid}")
+data = response.json()
+
+print(f"Player: {data['nickname']}")
+print(f"Banned: {data['is_banned']}")</code></pre>
+                </div>
+
+                <h3 class="subsection-title">JavaScript (Fetch)</h3>
+                <div class="code-block">
+                    <div class="code-header">
+                        <span>javascript</span>
+                        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                    </div>
+                    <pre><code class="language-javascript">const uid = "2513698016";
+fetch(`https://bancheck.tsunstudio.pw/bancheck?uid=${uid}`)
+  .then(response => response.json())
+  .then(data => {
+    console.log(`Player: ${data.nickname}`);
+    console.log(`Banned: ${data.is_banned}`);
+  });</code></pre>
+                </div>
+
+                <h3 class="subsection-title">Try It Live</h3>
+                <div class="try-it-box">
+                    <div class="input-group">
+                        <input type="text" id="tryUid" placeholder="Enter UID (e.g., 2646459501)" value="FFUid">
+                        <button id="tryBtn" onclick="tryAPI()">Try API</button>
+                    </div>
+                    <div id="tryResult" class="try-result"></div>
+                </div>
+            </section>
+
+
+            <section id="source-structure" class="section">
+                <h2 class="section-title"><span class="emoji">📁</span> <span class="gradient-text">Project
+                        Structure</span></h2>
+                <div class="code-block">
+                    <div class="code-header">
+                        <span>tree</span>
+                        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                    </div>
+                    <pre><code>📦 TSun-FF-Bancheck
+ ┣ 📂 static
+ ┃ ┣ 📜 style.css
+ ┃ ┣ 📜 script.js
+ ┃ ┗ 📜 docs.css
+ ┣ 📂 templates
+ ┃ ┣ 📜 index.html
+ ┃ ┗ 📜 docs.html
+ ┣ 📜 app.py
+ ┣ 📜 requirements.txt
+ ┣ 📜 Dockerfile
+ ┣ 📜 vercel.json
+ ┗ 📜 README.md</code></pre>
+                </div>
+            </section>
+
+            <section class="section">
+                <h2 class="section-title"><span class="emoji">🧑‍💻</span> <span class="gradient-text">Author</span>
+                </h2>
+                <div class="author-card">
+                    <div class="author-info">
+                        <h3>TSun</h3>
+                        <p>Made with 🫀 by <a href="https://github.com/saeedx302" target="_blank">༯𝙎ค૯𝙀𝘿✘🫀</a></p>
+                        <p class="author-tagline">Follow for more Python, API & projects</p>
+                    </div>
+                    <div class="github-stats">
+                        <a href="https://github.com/TSun-FreeFire/TSun-FF-Bancheck" target="_blank" class="stat-link">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                <path
+                                    d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+                            </svg>
+                            View on GitHub
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section">
+                <h2 class="section-title"><span class="emoji">📜</span> <span class="gradient-text">License</span></h2>
+                <p>This project is licensed under the <strong>MIT License</strong> — feel free to modify and share with
+                    credit.</p>
+            </section>
+        </main>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2025 TSun Studio. All rights reserved.</p>
+            <div class="footer-links">
+                <a href="https://github.com/TSun-FreeFire/TSun-FF-Bancheck" target="_blank">GitHub</a>
+                <a href="https://bancheck.tsunstudio.pw" target="_blank">Live Preview</a>
             </div>
         </div>
-
-        <h2 class="section-title">Other Battle Royale Games</h2>
-        <div class="panel-container">
-            <div class="panel-card" onclick="showPayment('PUBG MOBILE', 1500)">
-                <div class="user-counter"><span class="live-dot"></span>Live Using: <span class="count">3200</span></div>
-                <i class="fa-solid fa-gun card-icon" style="color: var(--pubg-color);"></i>
-                <h3>PUBG MOBILE</h3>
-                <p>Tools for PUBG Mobile & BGMI.</p>
-            </div>
-            <div class="panel-card" onclick="showPayment('CALL OF DUTY', 1200)">
-                <div class="user-counter"><span class="live-dot"></span>Live Using: <span class="count">1400</span></div>
-                <i class="fa-solid fa-person-rifle card-icon" style="color: var(--cod-color);"></i>
-                <h3>CALL OF DUTY</h3>
-                <p>Warzone & CODM specialized tools.</p>
-            </div>
-            <div class="panel-card" onclick="showOthersContent()">
-                <div class="user-counter"><span class="live-dot"></span>Live Using: <span class="count">5500</span></div>
-                <i class="fa-solid fa-gamepad card-icon" style="color: #00ff88;"></i>
-                <h3>OTHERS</h3>
-                <p>Free Fire MAX & more games.</p>
-            </div>
-        </div>
-    </main>
-
-    <section id="content-display-area">
-        <button class="back-button" onclick="showHome()">
-            <i class="fa-solid fa-arrow-left"></i> Back to Home
-        </button>
-        <div id="dynamic-content-text" class="content-body"></div>
-    </section>
-
-    <footer>
-        &copy; 2026 NEXT HIDDEN ELITE. Developed for Gamers.
     </footer>
 
-    <script>
-        const mainContentDiv = document.getElementById('main-content');
-        const contentDisplayArea = document.getElementById('content-display-area');
-        const dynamicContentText = document.getElementById('dynamic-content-text');
-
-        function showHome() {
-            mainContentDiv.style.display = 'block';
-            contentDisplayArea.style.display = 'none';
-            window.scrollTo(0, 0);
-        }
-
-        function showFreePanel() {
-            mainContentDiv.style.display = 'none';
-            contentDisplayArea.style.display = 'block';
-            dynamicContentText.innerHTML = `
-            <div class="free-download-box">
-                <div class="pc-panel-title">FREE PC PANEL</div>
-                <div class="panel-version">NHE FREE PANEL V2.3 - High Performance</div>
-                <a href="NHE FREE PANEL V2.3.zip" download class="download-btn">
-                    <i class="fa-solid fa-file-zipper"></i> DOWNLOAD
-                </a>
-                <br><br>
-                <div class="rar-pass">RAR PASS : 1</div>
-                <div class="danger-text">
-                    <i class="fa-solid fa-code"></i> DANGER <i class="fa-solid fa-skull-crossbones"></i>
-                </div>
-            </div>`;
-            window.scrollTo(0, 0);
-        }
-
-        // --- NEW showPayment FUNCTION WITH SUBSCRIPTION PLANS ---
-        // 'price' is now the price for '1 month' (number)
-        function showPayment(title, price) {
-            mainContentDiv.style.display = 'none';
-            contentDisplayArea.style.display = 'block';
-            dynamicContentText.innerHTML = `
-            <div class="payment-container">
-                <h2 class="content-title">${title}</h2>
-                <p style="color: #94a3b8; font-size: 0.9rem; margin-bottom: 15px;">প্ল্যান সিলেক্ট করুন:</p>
-                
-                <div class="subscription-plans">
-                    <button class="plan-btn active" onclick="updatePrice(this, ${price}, '1m')">1 Month</button>
-                    <button class="plan-btn" onclick="updatePrice(this, ${price * 1.8}, '2m')">2 Months</button>
-                    <button class="plan-btn" onclick="updatePrice(this, ${price * 6}, '1y')">1 Year</button>
-                    <button class="plan-btn" onclick="updatePrice(this, ${price * 10}, 'lt')">Lifetime</button>
-                </div>
-
-                <p>এই প্যাকটির বর্তমান মূল্য:</p>
-                <div class="price-tag">৳ <span id="current-price">${price}</span></div>
-                
-                <p style="color: #94a3b8; font-size: 0.9rem;">নিচের নাম্বারে <b>Send Money</b> করে TrxID প্রদান করুন:</p>
-                <div style="text-align:center;">
-                    <h3 style="color: var(--primary-color); background: #0a0e17; border: 1px dashed var(--primary-color); display: inline-block; padding: 10px 20px; border-radius: 8px; margin: 10px 0;">01320700404</h3>
-                </div>
-                <div class="payment-methods" style="justify-content: center;">
-                    <div class="method-card"><img src="my_bkash.png" alt="Bkash"></div>
-                    <div class="method-card"><img src="my_nagad.png" alt="Nagad"></div>
-                    <div class="method-card" style="background: #121a2b; color: #fff; flex-direction: column; font-size: 0.7rem;">
-                        <i class="fa-solid fa-globe"></i> NHE Pay
-                    </div>
-                </div>
-                <input type="text" id="userTrx" class="trx-input" placeholder="Transaction ID (TrxID) লিখুন">
-                <button class="buy-now-btn" onclick="confirmOrder()">Confirm Purchase</button>
-            </div>`;
-            window.scrollTo(0, 0);
-        }
-
-        // --- NEW updatePrice FUNCTION TO AUTO-UPDATE PRICE TAG ---
-        function updatePrice(btn, newPrice, planId) {
-            // Remove 'active' class from all other buttons in the current container
-            const allPlanBtns = btn.parentElement.querySelectorAll('.plan-btn');
-            allPlanBtns.forEach(p => p.classList.remove('active'));
-            
-            // Add 'active' class to clicked button
-            btn.classList.add('active');
-            
-            // Update the price tag text smoothly
-            const priceTag = document.getElementById('current-price');
-            priceTag.innerText = Math.round(newPrice);
-        }
-
-        function showContent(type) {
-            mainContentDiv.style.display = 'none';
-            contentDisplayArea.style.display = 'block';
-            
-            if (type === 'privacy') {
-                dynamicContentText.innerHTML = `
-                <h2 class="content-title">Privacy Policy</h2>
-                <div class="info-card-box scan-effect">
-                    <h3 style="margin-top:0; color:#fff; font-family:'Rajdhani'; letter-spacing:1px;">
-                        <i class="fa-solid fa-user-shield secure-shield" style="color:var(--primary-color); margin-right:10px;"></i> DATA PROTECTION
-                    </h3>
-                    <ul class="info-card-list">
-                        <li><i class="fa-solid fa-circle-check" style="color: #00ff88;"></i> <span><b>Information Safety:</b> We prioritize your privacy and do not store any personal data on our servers.</span></li>
-                        <li><i class="fa-solid fa-circle-check" style="color: #00ff88;"></i> <span><b>Third-Party:</b> We never share your gaming information or payment logs with any third parties.</span></li>
-                        <li><i class="fa-solid fa-circle-check" style="color: #00ff88;"></i> <span><b>App Security:</b> Our panels are built with high-end encryption to ensure a secure user experience.</span></li>
-                    </ul>
-                </div>
-                <p style="text-align: center; color: #64748b; font-size: 0.85rem; margin-top: 20px;">Your data is 100% safe with NEXT HIDDEN ELITE.</p>`;
-            } 
-            else if (type === 'disclaimer') {
-                dynamicContentText.innerHTML = `
-                <h2 class="content-title">Disclaimer</h2>
-                <div class="info-card-box scan-effect">
-                    <h3 style="margin-top:0; color:#fff; font-family:'Rajdhani'; letter-spacing:1px;"><i class="fa-solid fa-triangle-exclamation" style="color:var(--primary-color); margin-right:10px;"></i> TERMS OF USE</h3>
-                    <ul class="info-card-list">
-                        <li><i class="fa-solid fa-circle-check" style="color: #00ff88;"></i> <span><b>User Risk:</b> The tools provided are for educational and entertainment purposes. Use them at your own risk.</span></li>
-                        <li><i class="fa-solid fa-circle-check" style="color: #00ff88;"></i> <span><b>Account Safety:</b> NHE is not responsible for any game account bans or restrictions. We recommend using guest accounts.</span></li>
-                        <li><i class="fa-solid fa-circle-check" style="color: #00ff88;"></i> <span><b>No Refunds:</b> Once a purchase is confirmed and verified, no refund requests will be entertained.</span></li>
-                    </ul>
-                </div>
-                <p style="text-align: center; color: #64748b; font-size: 0.85rem; margin-top: 20px;">By using our service, you agree to these terms.</p>`;
-            } 
-            else if (type === 'update') {
-                dynamicContentText.innerHTML = `
-                <h2 class="content-title">System Update</h2>
-                <div style="animation: fadeIn 0.6s ease;">
-                    <div style="text-align: center; margin-bottom: 25px;">
-                        <i class="fa-solid fa-spinner fa-spin" style="font-size: 3rem; color: var(--primary-color);"></i>
-                        <p style="margin-top: 15px; color: #94a3b8;">Checking system files...</p>
-                    </div>
-                    <div class="info-card-box scan-effect">
-                        <h3 style="margin: 0 0 15px 0; color: #fff; font-family: 'Rajdhani'; display: flex; align-items: center; justify-content: space-between;">
-                            Version NHE-V3.5.0 <span style="font-size: 0.7rem; background: var(--primary-color); color: #000; padding: 3px 10px; border-radius: 4px;">LATEST</span>
-                        </h3>
-                        <ul class="info-card-list">
-                            <li><i class="fa-solid fa-circle-check" style="color: #00ff88;"></i> <span><b>New UI:</b> Dynamic loading animations added to Privacy and Disclaimer sections.</span></li>
-                            <li><i class="fa-solid fa-bolt" style="color: #ffd700;"></i> <span><b>Performance:</b> 40% faster loading speed for dynamic content.</span></li>
-                            <li><i class="fa-solid fa-bug-slash" style="color: #ff0055;"></i> <span><b>Bug Fix:</b> Fixed payment submission error and translation issues.</span></li>
-                        </ul>
-                    </div>
-                    <p style="text-align: center; color: #64748b; font-size: 0.85rem; margin-top: 20px;">Your system is currently on the latest version.</p>
-                </div>`;
-            }
-            window.scrollTo(0, 0);
-        }
-
-        // --- OTHERS CONTENT updated to include showPayment (1 month price) calls ---
-        function showOthersContent() {
-            mainContentDiv.style.display = 'none';
-            contentDisplayArea.style.display = 'block';
-            dynamicContentText.innerHTML = `
-            <div class="others-panel-box scan-effect">
-                <div class="others-content-wrapper">
-                    <h2 class="content-title">Other BR Games Tools</h2>
-                    <div class="info-card-box" style="padding: 20px; background: rgba(0, 242, 234, 0.02); margin-bottom: 25px;">
-                        <h3 style="margin-top:0; color:#fff; font-family:'Rajdhani'; font-size: 1.1rem; letter-spacing:1px; display:flex; align-items:center; gap:10px;">
-                            <i class="fa-solid fa-gamepad" style="color:var(--primary-color);"></i>
-                            AVAILABLE GAME TOOLS
-                        </h3>
-                        <div class="others-games-grid">
-                            <div class="other-game-card" onclick="showPayment('Apex Legends Mobile', 1300)">
-                                <div class="user-counter"><span class="live-dot"></span>Live Using: <span class="count">450</span></div>
-                                <i class="fa-solid fa-jet-fighter other-game-icon"></i>
-                                <div class="other-game-name">Apex Legends Mobile</div>
-                                <div class="other-game-desc">Aimbot & Recoil Control</div>
-                            </div>
-                            <div class="other-game-card" onclick="showPayment('Free Fire MAX', 800)">
-                                <div class="user-counter"><span class="live-dot"></span>Live Using: <span class="count">4200</span></div>
-                                <i class="fa-solid fa-fire other-game-icon"></i>
-                                <div class="other-game-name">Free Fire MAX</div>
-                                <div class="other-game-desc">Auto Headshot & ESP</div>
-                            </div>
-                            <div class="other-game-card" onclick="showPayment('Fortnite Mobile', 1600)">
-                                <div class="user-counter"><span class="live-dot"></span>Live Using: <span class="count">120</span></div>
-                                <i class="fa-solid fa-building other-game-icon"></i>
-                                <div class="other-game-name">Fortnite Mobile</div>
-                                <div class="other-game-desc">Bypass Detection & Build</div>
-                            </div>
-                            <div class="other-game-card" onclick="showPayment('New State Mobile', 1400)">
-                                <div class="user-counter"><span class="live-dot"></span>Live Using: <span class="count">310</span></div>
-                                <i class="fa-solid fa-user-ninja other-game-icon"></i>
-                                <div class="other-game-name">New State Mobile</div>
-                                <div class="other-game-desc">Wallhack & Instant Hit</div>
-                            </div>
-                            <div class="other-game-card" onclick="showPayment('Rules of Survival 2', 1000)">
-                                <div class="user-counter"><span class="live-dot"></span>Live Using: <span class="count">180</span></div>
-                                <i class="fa-solid fa-person-running other-game-icon"></i>
-                                <div class="other-game-name">Rules of Survival 2</div>
-                                <div class="other-game-desc">Aimbot & Speed Tool</div>
-                            </div>
-                            <div class="other-game-card" onclick="showPayment('Cyber Hunter', 1100)">
-                                <div class="user-counter"><span class="live-dot"></span>Live Using: <span class="count">250</span></div>
-                                <i class="fa-solid fa-robot other-game-icon"></i>
-                                <div class="other-game-name">Cyber Hunter</div>
-                                <div class="other-game-desc">ESP, No Recoil, Magnet</div>
-                            </div>
-                            <div class="other-game-card" onclick="showPayment('Farlight 84', 1200)">
-                                <div class="user-counter"><span class="live-dot"></span>Live Using: <span class="count">390</span></div>
-                                <i class="fa-solid fa-rocket other-game-icon"></i>
-                                <div class="other-game-name">Farlight 84</div>
-                                <div class="other-game-desc">Aimbot & Flight Tool</div>
-                            </div>
-                            <div class="other-game-card" onclick="showPayment('Sausage Man', 900)">
-                                <div class="user-counter"><span class="live-dot"></span>Live Using: <span class="count">610</span></div>
-                                <i class="fa-solid fa-egg other-game-icon"></i>
-                                <div class="other-game-name">Sausage Man</div>
-                                <div class="other-game-desc"> ESP, Auto Headshot, Magnet</div>
-                            </div>
-                            <div class="other-game-card" onclick="showPayment('Arena Breakout', 1400)">
-                                <div class="user-counter"><span class="live-dot"></span>Live Using: <span class="count">90</span></div>
-                                <i class="fa-solid fa-door-open other-game-icon"></i>
-                                <div class="other-game-name">Arena Breakout</div>
-                                <div class="other-game-desc">Wallhack & Instant Hit</div>
-                            </div>
-                            <div class="other-game-card" onclick="showPayment('Bloodstrike Mobile', 1100)">
-                                <div class="user-counter"><span class="live-dot"></span>Live Using: <span class="count">210</span></div>
-                                <i class="fa-solid fa-mask other-game-icon"></i>
-                                <div class="other-game-name">Bloodstrike Mobile</div>
-                                <div class="other-game-desc">ESP & No Recoil, Aimbot</div>
-                            </div>
-                        </div>
-                        <p style="color: #64748b; font-size: 0.85rem; text-align: center; margin: 0;">More games coming soon. All are with anti-ban.</p>
-                    </div>
-                </div>
-            </div>`;
-            window.scrollTo(0, 0);
-            startCounterAnimation(); // Re-start animation for dynamically loaded cards
-        }
-
-        function confirmOrder() {
-            const trxInput = document.getElementById('userTrx');
-            const trx = trxInput.value.trim();
-            
-            if(trx.length < 5) {
-                alert("দয়া করে সঠিক ট্রানজেকশন আইডি দিন (ন্যূনতম ৫ অক্ষর)!");
-                trxInput.focus();
-            } else {
-                alert("ধন্যবাদ! আপনার ট্রানজেকশন আইডিটি গ্রহণ করা হয়েছে। যাচাই শেষে প্যাকটি চালু হবে।");
-                showHome();
-            }
-        }
-
-        // --- LIVE USER COUNTER ANIMATION ---
-        function startCounterAnimation() {
-            const counters = document.querySelectorAll('.user-counter .count');
-            
-            // Clear existing intervals to prevent multiple timers running on same element
-            if (window.counterIntervals) {
-                window.counterIntervals.forEach(clearInterval);
-            }
-            window.counterIntervals = [];
-
-            counters.forEach(counter => {
-                // Initial target value
-                let target = parseInt(counter.innerText);
-                
-                // Function to increase number slightly over time
-                const updateCount = () => {
-                    // Random increase (1 to 3)
-                    const change = Math.floor(Math.random() * 3) + 1;
-                    target += change;
-                    counter.innerText = target;
-                };
-
-                // Run the update function every 3-7 seconds (randomly)
-                const randomTime = (Math.floor(Math.random() * 4) + 3) * 1000;
-                const intervalId = setInterval(updateCount, randomTime);
-                window.counterIntervals.push(intervalId); // Store interval ID
-            });
-        }
-
-        // Start animation when page loads
-        window.onload = startCounterAnimation;
-    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script src="/static/docs.js"></script>
 </body>
+
 </html>

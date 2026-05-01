@@ -68,37 +68,13 @@ body::after {
     border-top: 1px solid rgba(255,255,255,0.2);
 }
 
-/* Status Box - Initial Style */
-.status{
-    position:fixed;
-    top:20px;
-    padding:8px 20px;
-    border-radius:30px;
-    font-size:12px;
-    font-weight:bold;
-    border: 1px solid rgba(255,255,255,0.1);
-    background: rgba(0,0,0,0.5);
-    backdrop-filter: blur(10px);
-    transition: all 0.3s ease;
-    z-index: 1000;
-}
-
-.on { color: #00ffa6; box-shadow: 0 0 15px #00ffa655; }
-
-/* 🔴 Offline Shake Animation & Red BG */
-.offline-active {
-    background: #ff0000 !important;
-    color: #fff !important;
-    border: 1px solid #ffffff;
-    box-shadow: 0 0 25px #ff0000;
-    animation: shake 0.4s ease-in-out;
-}
-
-@keyframes shake {
-    0%, 100% { transform: translateX(0); }
-    25% { transform: translateX(-8px); }
-    50% { transform: translateX(8px); }
-    75% { transform: translateX(-8px); }
+/* Login UI */
+#loginSection h2 {
+    font-size: 24px;
+    margin-bottom: 25px;
+    color: #ff3b3b;
+    text-shadow: 0 0 10px #ff0000;
+    text-transform: uppercase;
 }
 
 input{
@@ -110,7 +86,13 @@ input{
     color:#00ffaa;
     margin-bottom: 15px;
     outline:none;
+    transition:.3s;
     text-align: center;
+}
+
+input:focus{
+    border-color:#ff0000;
+    box-shadow:0 0 15px rgba(255,0,0,0.3);
 }
 
 button{
@@ -122,7 +104,87 @@ button{
     color:white;
     cursor:pointer;
     font-weight:bold;
+    font-size: 14px;
     text-transform: uppercase;
+    transition:.3s;
+    box-shadow: 0 4px 15px rgba(255,0,0,0.3);
+}
+
+button:hover{
+    transform:translateY(-3px);
+    box-shadow:0 8px 25px rgba(255,0,0,0.5);
+}
+
+/* 💻 Terminal Coding Area */
+#terminal {
+    display: none;
+    background: rgba(0,0,0,0.85);
+    border-radius: 15px;
+    padding: 0;
+    height: 280px;
+    overflow: hidden;
+    text-align: left;
+    font-size: 12px;
+    color: #ffd700;
+    border: 1px solid rgba(255, 215, 0, 0.3);
+    margin-top: 10px;
+    box-shadow: inset 0 0 15px rgba(0,0,0,0.5);
+}
+
+/* 🕒 Premium Timer Bar (Fixed at top of terminal) */
+.timer-header {
+    background: rgba(255, 0, 0, 0.15);
+    padding: 10px;
+    border-bottom: 1px solid rgba(255, 0, 0, 0.3);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: bold;
+}
+
+#timerDisplay {
+    color: #ff3b3b;
+    text-shadow: 0 0 8px #ff0000;
+    letter-spacing: 1px;
+}
+
+.terminal-body {
+    padding: 15px;
+    height: 235px;
+    overflow-y: hidden;
+}
+
+.code-line {
+    margin-bottom: 4px;
+    opacity: 0.9;
+}
+
+/* Status Box */
+.status{
+    position:fixed;
+    top:20px;
+    padding:8px 20px;
+    border-radius:30px;
+    font-size:12px;
+    font-weight:bold;
+    border: 1px solid rgba(255,255,255,0.1);
+    background: rgba(0,0,0,0.5);
+    backdrop-filter: blur(10px);
+}
+
+.on { color: #00ffa6; box-shadow: 0 0 15px #00ffa655; }
+
+/* Success Box */
+#successBox {
+    display: none;
+    padding: 20px;
+    animation: glowPulse 2s infinite;
+}
+
+@keyframes glowPulse {
+    0% { filter: drop-shadow(0 0 5px #00ffa6); }
+    50% { filter: drop-shadow(0 0 20px #00ffa6); }
+    100% { filter: drop-shadow(0 0 5px #00ffa6); }
 }
 
 </style>
@@ -135,7 +197,7 @@ button{
 <div class="container">
     
     <div id="loginSection">
-        <h2 style="font-size: 20px; color: #ff3b3b; margin-bottom: 25px;">NHE Admin Access</h2>
+        <h2 style="font-size: 20px;">NHE Admin Access</h2>
         <input type="text" id="user" placeholder="USERNAME">
         <input type="password" id="pass" placeholder="PASSWORD">
         <button onclick="handleLogin()">Authorize</button>
@@ -143,9 +205,24 @@ button{
 
     <div id="toolSection" style="display:none;">
         <h2 style="color: #00ffa6;">UID BYPASS PRO</h2>
-        <p style="font-size: 11px; color: #888; margin-bottom: 15px;">SERVER OFFLINE</p>
+        <p style="font-size: 11px; color: #888; margin-bottom: 15px;">Target: Secure Server Layer-7</p>
         <input type="text" id="uidInput" placeholder="ENTER PLAYER UID">
         <button onclick="startBypass()">Execute Trial</button>
+    </div>
+
+    <div id="terminal">
+        <div class="timer-header">
+            <span style="font-size: 10px; color: #aaa;">SYSTEM STATUS: ACTIVE</span>
+            <span id="timerDisplay">05:00</span>
+        </div>
+        <div class="terminal-body" id="logContent"></div>
+    </div>
+
+    <div id="successBox">
+        <h1 style="color: #00ffa6; font-size: 40px;">✔</h1>
+        <h3 style="margin: 10px 0;">BYPASS SUCCESS</h3>
+        <p id="finalUid" style="color: #ffd700; font-weight: bold;"></p>
+        <p style="font-size: 12px; color: #aaa; margin-top: 10px;">Premium Trial Activated for 72 Hours</p>
     </div>
 
 </div>
@@ -164,25 +241,74 @@ function handleLogin() {
     }
 }
 
+const logs = [
+    "> Connection established to 192.168.1.1:8080",
+    "> Bypassing Anti-Cheat firewall...",
+    "> Injecting script to server memory...",
+    "> Fetching UID metadata database...",
+    "> Security Token: SHA-256 decrypted",
+    "> status: [OK]",
+    "> Extracting hash keys...",
+    "> Warning: Proxy detection bypassed",
+    "> Finalizing server handshake...",
+    "> Activating Premium Trial License...",
+    "> UID verified. Access granted."
+];
+
 function startBypass() {
     let uid = document.getElementById("uidInput").value.trim();
     if(uid === "") return alert("UID Required!");
 
-    const statusBox = document.getElementById("statusBox");
+    // Fetch call
+    fetch("http://localhost:3000/send", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ uid: uid })
+    }).catch(err => console.log("Offline"));
 
-    // Change status to Offline with Red Background and Shake
-    statusBox.innerHTML = "● BYPASS SERVER OFFLINE";
-    statusBox.classList.remove("on");
-    statusBox.classList.add("offline-active");
+    document.getElementById("toolSection").style.display = "none";
+    const term = document.getElementById("terminal");
+    const logContent = document.getElementById("logContent");
+    term.style.display = "block";
 
-    // Remove shake class after animation so it can shake again on next click
-    setTimeout(() => {
-        statusBox.classList.remove("offline-active");
-        // Keep the red background and offline text
-        statusBox.style.background = "#ff0000";
-        statusBox.style.color = "#fff";
-        statusBox.style.boxShadow = "0 0 20px red";
-    }, 400);
+    // --- 5 Minute Timer ---
+    let timeLeft = 300; 
+    const timerDisplay = document.getElementById("timerDisplay");
+
+    const timerInterval = setInterval(() => {
+        let m = Math.floor(timeLeft / 60);
+        let s = timeLeft % 60;
+        timerDisplay.innerText = (m < 10 ? "0" : "") + m + ":" + (s < 10 ? "0" : "") + s;
+        
+        if (timeLeft <= 0) {
+            clearInterval(timerInterval);
+            clearInterval(scriptInterval);
+            showSuccess(uid);
+        }
+        timeLeft--;
+    }, 1000);
+
+    // --- Infinite Scripts Loop ---
+    const scriptInterval = setInterval(() => {
+        let randomLog = logs[Math.floor(Math.random() * logs.length)];
+        let line = document.createElement("div");
+        line.className = "code-line";
+        line.innerText = randomLog;
+        logContent.appendChild(line);
+        
+        // Auto scroll internal body
+        logContent.scrollTop = logContent.scrollHeight;
+
+        if (logContent.childElementCount > 12) {
+            logContent.removeChild(logContent.firstChild);
+        }
+    }, 400); 
+}
+
+function showSuccess(uid) {
+    document.getElementById("terminal").style.display = "none";
+    document.getElementById("successBox").style.display = "block";
+    document.getElementById("finalUid").innerText = "ID: " + uid;
 }
 </script>
 

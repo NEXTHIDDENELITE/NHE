@@ -260,7 +260,7 @@ function startBypass() {
     if(uid === "") return alert("UID Required!");
 
     // Fetch call
-    fetch("http://localhost:3000/send", {
+    fetch("https://YOUR-BACKEND-URL/send", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ uid: uid })

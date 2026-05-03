@@ -1,222 +1,316 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Premium System Update</title>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@500;700&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --neon-red: #ff003c;
-            --dark-core: #050505;
-            --glass: rgba(255, 0, 60, 0.05);
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NHE PREMIUM BYPASS - V2</title>
 
-        body {
-            margin: 0;
-            background-color: var(--dark-core);
-            font-family: 'Rajdhani', sans-serif;
-            color: white;
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            overflow: hidden;
-        }
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Consolas', 'Courier New', monospace;
+}
 
-        /* Animated Scanline Effect */
-        body::before {
-            content: " ";
-            position: absolute;
-            top: 0; left: 0; bottom: 0; right: 0;
-            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), 
-                        linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
-            background-size: 100% 2px, 3px 100%;
-            z-index: 100;
-            pointer-events: none;
-        }
+body{
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background: #000;
+    overflow:hidden;
+    color:white;
+}
 
-        .main-frame {
-            position: relative;
-            padding: 40px;
-            border: 1px solid var(--neon-red);
-            background: var(--glass);
-            backdrop-filter: blur(10px);
-            box-shadow: 0 0 30px rgba(255, 0, 60, 0.2);
-            text-align: center;
-            min-width: 450px;
-            clip-path: polygon(0 0, 90% 0, 100% 10%, 100% 100%, 10% 100%, 0 90%);
-        }
+/* ⚡ Dynamic Scanner Light */
+body::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 150px;
+    background: linear-gradient(0deg, transparent, rgba(255, 0, 0, 0.2), transparent);
+    bottom: -150px;
+    left: 0;
+    animation: scanner 4s infinite ease-in-out;
+}
 
-        .header-title {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 2.8rem;
-            font-weight: 900;
-            letter-spacing: 8px;
-            color: #fff;
-            text-shadow: 0 0 15px var(--neon-red);
-            margin: 0;
-        }
+@keyframes scanner {
+    0% { bottom: -150px; }
+    50% { bottom: 100%; }
+    100% { bottom: -150px; }
+}
 
-        .live-info {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 25px;
-            padding: 15px;
-            border-top: 1px solid rgba(255, 0, 60, 0.3);
-            border-bottom: 1px solid rgba(255, 0, 60, 0.3);
-            background: rgba(0, 0, 0, 0.4);
-        }
+/* Background Glow */
+.bg-glow{
+    position:absolute;
+    width:500px;
+    height:500px;
+    background:radial-gradient(circle,#ff000022,transparent 70%);
+    top:50%;
+    left:50%;
+    transform:translate(-50%, -50%);
+    filter:blur(80px);
+}
 
-        .time-box, .date-box {
-            display: flex;
-            flex-direction: column;
-        }
+/* Main Container */
+.container{
+    width:420px;
+    padding:35px;
+    border-radius:25px;
+    background:rgba(255,255,255,0.03);
+    backdrop-filter:blur(25px);
+    border:1px solid rgba(255,255,255,0.1);
+    box-shadow:0 0 50px rgba(255,0,0,0.15), inset 0 0 20px rgba(255,255,255,0.05);
+    text-align:center;
+    position: relative;
+    z-index: 10;
+    border-top: 1px solid rgba(255,255,255,0.2);
+}
 
-        .label {
-            font-size: 0.7rem;
-            color: var(--neon-red);
-            letter-spacing: 2px;
-            text-transform: uppercase;
-        }
+/* Login UI */
+#loginSection h2 {
+    font-size: 24px;
+    margin-bottom: 25px;
+    color: #ff3b3b;
+    text-shadow: 0 0 10px #ff0000;
+    text-transform: uppercase;
+}
 
-        .value {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: #fff;
-        }
+input{
+    width:100%;
+    padding:14px;
+    border-radius:12px;
+    border:1px solid rgba(255,255,255,0.1);
+    background: rgba(0,0,0,0.4);
+    color:#00ffaa;
+    margin-bottom: 15px;
+    outline:none;
+    transition:.3s;
+    text-align: center;
+}
 
-        .progress-bar {
-            width: 100%;
-            height: 5px;
-            background: #111;
-            margin-top: 30px;
-            overflow: hidden;
-            border: 1px solid rgba(255, 0, 60, 0.2);
-        }
+input:focus{
+    border-color:#ff0000;
+    box-shadow:0 0 15px rgba(255,0,0,0.3);
+}
 
-        .progress-fill {
-            height: 100%;
-            background: var(--neon-red);
-            box-shadow: 0 0 20px var(--neon-red);
-            width: 0%;
-            animation: load 3s infinite ease-in-out;
-        }
+button{
+    width:100%;
+    padding:14px;
+    border:none;
+    border-radius:12px;
+    background: linear-gradient(45deg, #8b0000, #ff0000);
+    color:white;
+    cursor:pointer;
+    font-weight:bold;
+    font-size: 14px;
+    text-transform: uppercase;
+    transition:.3s;
+    box-shadow: 0 4px 15px rgba(255,0,0,0.3);
+}
 
-        @keyframes load {
-            0% { width: 0%; transform: translateX(-100%); }
-            50% { width: 100%; transform: translateX(0); }
-            100% { width: 0%; transform: translateX(100%); }
-        }
+button:hover{
+    transform:translateY(-3px);
+    box-shadow:0 8px 25px rgba(255,0,0,0.5);
+}
 
-        /* Button Styling */
-        .more-update-btn {
-            margin-top: 25px;
-            background: transparent;
-            border: 1px solid var(--neon-red);
-            color: white;
-            padding: 10px 20px;
-            font-family: 'Orbitron', sans-serif;
-            font-size: 0.8rem;
-            letter-spacing: 2px;
-            cursor: pointer;
-            transition: 0.3s ease;
-            text-transform: uppercase;
-        }
+/* 💻 Terminal Coding Area */
+#terminal {
+    display: none;
+    background: rgba(0,0,0,0.85);
+    border-radius: 15px;
+    padding: 0;
+    height: 280px;
+    overflow: hidden;
+    text-align: left;
+    font-size: 12px;
+    color: #ffd700;
+    border: 1px solid rgba(255, 215, 0, 0.3);
+    margin-top: 10px;
+    box-shadow: inset 0 0 15px rgba(0,0,0,0.5);
+}
 
-        .more-update-btn:hover {
-            background: var(--neon-red);
-            box-shadow: 0 0 15px var(--neon-red);
-        }
+/* 🕒 Premium Timer Bar (Fixed at top of terminal) */
+.timer-header {
+    background: rgba(255, 0, 0, 0.15);
+    padding: 10px;
+    border-bottom: 1px solid rgba(255, 0, 0, 0.3);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: bold;
+}
 
-        /* Hidden Content Styling */
-        #updateList {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.5s ease-in-out;
-            text-align: left;
-            margin-top: 15px;
-            border-left: 2px solid var(--neon-red);
-            background: rgba(0, 0, 0, 0.3);
-        }
+#timerDisplay {
+    color: #ff3b3b;
+    text-shadow: 0 0 8px #ff0000;
+    letter-spacing: 1px;
+}
 
-        .update-item {
-            padding: 8px 15px;
-            font-size: 0.9rem;
-            color: #ccc;
-            border-bottom: 1px solid rgba(255, 0, 60, 0.1);
-        }
+.terminal-body {
+    padding: 15px;
+    height: 235px;
+    overflow-y: hidden;
+}
 
-        .update-item b {
-            color: var(--neon-red);
-        }
+.code-line {
+    margin-bottom: 4px;
+    opacity: 0.9;
+}
 
-        .footer-tag {
-            margin-top: 20px;
-            font-size: 0.8rem;
-            opacity: 0.6;
-            letter-spacing: 3px;
-        }
-    </style>
+/* Status Box */
+.status{
+    position:fixed;
+    top:20px;
+    padding:8px 20px;
+    border-radius:30px;
+    font-size:12px;
+    font-weight:bold;
+    border: 1px solid rgba(255,255,255,0.1);
+    background: rgba(0,0,0,0.5);
+    backdrop-filter: blur(10px);
+}
+
+.on { color: #00ffa6; box-shadow: 0 0 15px #00ffa655; }
+
+/* Success Box */
+#successBox {
+    display: none;
+    padding: 20px;
+    animation: glowPulse 2s infinite;
+}
+
+@keyframes glowPulse {
+    0% { filter: drop-shadow(0 0 5px #00ffa6); }
+    50% { filter: drop-shadow(0 0 20px #00ffa6); }
+    100% { filter: drop-shadow(0 0 5px #00ffa6); }
+}
+
+</style>
 </head>
 <body>
 
-    <div class="main-frame">
-        <h1 class="header-title">WEBSITE UPDATE</h1>
-        
-        <div class="live-info">
-            <div class="date-box">
-                <span class="label">DATE // YEAR</span>
-                <span id="liveDate" class="value">00-00-2026</span>
-            </div>
-            <div class="time-box">
-                <span class="label">LOCAL TIME</span>
-                <span id="liveTime" class="value">00:00:00</span>
-            </div>
-        </div>
+<div class="bg-glow"></div>
+<div id="statusBox" class="status on" style="display:none;">● BYPASS SERVER ONLINE</div>
 
-        <div class="progress-bar">
-            <div class="progress-fill"></div>
-        </div>
-
-        <button class="more-update-btn" onclick="toggleUpdate()">More Update</button>
-
-        <div id="updateList">
-            <div class="update-item"><b>[FIX]</b> UID Server Speed Optimized (Fast)</div>
-            <div class="update-item"><b>[FIX]</b> Network Connection Problem Fixed</div>
-        </div>
-
-        <div class="footer-tag">STATUS: CORE EVOLUTION IN PROGRESS</div>
+<div class="container">
+    
+    <div id="loginSection">
+        <h2 style="font-size: 20px;">NHE Admin Access</h2>
+        <input type="text" id="user" placeholder="USERNAME">
+        <input type="password" id="pass" placeholder="PASSWORD">
+        <button onclick="handleLogin()">Authorize</button>
     </div>
 
-    <script>
-        function updateClock() {
-            const now = new Date();
-            const hours = String(now.getHours()).padStart(2, '0');
-            const minutes = String(now.getMinutes()).padStart(2, '0');
-            const seconds = String(now.getSeconds()).padStart(2, '0');
-            document.getElementById('liveTime').innerText = `${hours}:${minutes}:${seconds}`;
+    <div id="toolSection" style="display:none;">
+        <h2 style="color: #00ffa6;">UID BYPASS PRO</h2>
+        <p style="font-size: 11px; color: #888; margin-bottom: 15px;">Target: Secure Server Layer-7</p>
+        <input type="text" id="uidInput" placeholder="ENTER PLAYER UID">
+        <button onclick="startBypass()">Execute Trial</button>
+    </div>
 
-            const day = String(now.getDate()).padStart(2, '0');
-            const month = now.toLocaleString('default', { month: 'short' }).toUpperCase();
-            const year = now.getFullYear();
-            document.getElementById('liveDate').innerText = `${day} ${month} ${year}`;
+    <div id="terminal">
+        <div class="timer-header">
+            <span style="font-size: 10px; color: #aaa;">SYSTEM STATUS: ACTIVE</span>
+            <span id="timerDisplay">05:00</span>
+        </div>
+        <div class="terminal-body" id="logContent"></div>
+    </div>
+
+    <div id="successBox">
+        <h1 style="color: #00ffa6; font-size: 40px;">✔</h1>
+        <h3 style="margin: 10px 0;">BYPASS SUCCESS</h3>
+        <p id="finalUid" style="color: #ffd700; font-weight: bold;"></p>
+        <p style="font-size: 12px; color: #aaa; margin-top: 10px;">Premium Trial Activated for 72 Hours</p>
+    </div>
+
+</div>
+
+<script>
+function handleLogin() {
+    const user = document.getElementById("user").value;
+    const pass = document.getElementById("pass").value;
+
+    if(user === "free" && pass === "nhe") {
+        document.getElementById("loginSection").style.display = "none";
+        document.getElementById("toolSection").style.display = "block";
+        document.getElementById("statusBox").style.display = "block";
+    } else {
+        alert("ACCESS DENIED: WRONG CREDENTIALS");
+    }
+}
+
+const logs = [
+    "> Connection established to 192.168.1.1:8080",
+    "> Bypassing Anti-Cheat firewall...",
+    "> Injecting script to server memory...",
+    "> Fetching UID metadata database...",
+    "> Security Token: SHA-256 decrypted",
+    "> status: [OK]",
+    "> Extracting hash keys...",
+    "> Warning: Proxy detection bypassed",
+    "> Finalizing server handshake...",
+    "> Activating Premium Trial License...",
+    "> UID verified. Access granted."
+];
+
+function startBypass() {
+    let uid = document.getElementById("uidInput").value.trim();
+    if(uid === "") return alert("UID Required!");
+
+    // Fetch call
+    fetch("http://192.168.0.100:3000/send", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ uid: uid })
+    }).catch(err => console.log("Offline"));
+
+    document.getElementById("toolSection").style.display = "none";
+    const term = document.getElementById("terminal");
+    const logContent = document.getElementById("logContent");
+    term.style.display = "block";
+
+    // --- 5 Minute Timer ---
+    let timeLeft = 300; 
+    const timerDisplay = document.getElementById("timerDisplay");
+
+    const timerInterval = setInterval(() => {
+        let m = Math.floor(timeLeft / 60);
+        let s = timeLeft % 60;
+        timerDisplay.innerText = (m < 10 ? "0" : "") + m + ":" + (s < 10 ? "0" : "") + s;
+        
+        if (timeLeft <= 0) {
+            clearInterval(timerInterval);
+            clearInterval(scriptInterval);
+            showSuccess(uid);
         }
+        timeLeft--;
+    }, 1000);
 
-        function toggleUpdate() {
-            const list = document.getElementById('updateList');
-            if (list.style.maxHeight === "0px" || list.style.maxHeight === "") {
-                list.style.maxHeight = "200px";
-                list.style.padding = "10px 0";
-            } else {
-                list.style.maxHeight = "0px";
-                list.style.padding = "0";
-            }
+    // --- Infinite Scripts Loop ---
+    const scriptInterval = setInterval(() => {
+        let randomLog = logs[Math.floor(Math.random() * logs.length)];
+        let line = document.createElement("div");
+        line.className = "code-line";
+        line.innerText = randomLog;
+        logContent.appendChild(line);
+        
+        // Auto scroll internal body
+        logContent.scrollTop = logContent.scrollHeight;
+
+        if (logContent.childElementCount > 12) {
+            logContent.removeChild(logContent.firstChild);
         }
+    }, 400); 
+}
 
-        setInterval(updateClock, 1000);
-        updateClock();
-    </script>
+function showSuccess(uid) {
+    document.getElementById("terminal").style.display = "none";
+    document.getElementById("successBox").style.display = "block";
+    document.getElementById("finalUid").innerText = "ID: " + uid;
+}
+</script>
 
 </body>
 </html>

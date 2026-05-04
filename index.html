@@ -1,190 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>NHE PREMIUM BYPASS - V2</title>
-
-<style>
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:'Consolas', 'Courier New', monospace;
-}
-
-body{
-    height:100vh;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    background: #000;
-    overflow:hidden;
-    color:white;
-}
-
-/* ⚡ Dynamic Scanner Light */
-body::after {
-    content: "";
-    position: absolute;
-    width: 100%;
-    height: 150px;
-    background: linear-gradient(0deg, transparent, rgba(255, 0, 0, 0.2), transparent);
-    bottom: -150px;
-    left: 0;
-    animation: scanner 4s infinite ease-in-out;
-}
-
-@keyframes scanner {
-    0% { bottom: -150px; }
-    50% { bottom: 100%; }
-    100% { bottom: -150px; }
-}
-
-/* Background Glow */
-.bg-glow{
-    position:absolute;
-    width:500px;
-    height:500px;
-    background:radial-gradient(circle,#ff000022,transparent 70%);
-    top:50%;
-    left:50%;
-    transform:translate(-50%, -50%);
-    filter:blur(80px);
-}
-
-/* Main Container */
-.container{
-    width:420px;
-    padding:35px;
-    border-radius:25px;
-    background:rgba(255,255,255,0.03);
-    backdrop-filter:blur(25px);
-    border:1px solid rgba(255,255,255,0.1);
-    box-shadow:0 0 50px rgba(255,0,0,0.15), inset 0 0 20px rgba(255,255,255,0.05);
-    text-align:center;
-    position: relative;
-    z-index: 10;
-    border-top: 1px solid rgba(255,255,255,0.2);
-}
-
-/* Status Box - Initial Style */
-.status{
-    position:fixed;
-    top:20px;
-    padding:8px 20px;
-    border-radius:30px;
-    font-size:12px;
-    font-weight:bold;
-    border: 1px solid rgba(255,255,255,0.1);
-    background: rgba(0,0,0,0.5);
-    backdrop-filter: blur(10px);
-    transition: all 0.3s ease;
-    z-index: 1000;
-}
-
-.on { color: #00ffa6; box-shadow: 0 0 15px #00ffa655; }
-
-/* 🔴 Offline Shake Animation & Red BG */
-.offline-active {
-    background: #ff0000 !important;
-    color: #fff !important;
-    border: 1px solid #ffffff;
-    box-shadow: 0 0 25px #ff0000;
-    animation: shake 0.4s ease-in-out;
-}
-
-@keyframes shake {
-    0%, 100% { transform: translateX(0); }
-    25% { transform: translateX(-8px); }
-    50% { transform: translateX(8px); }
-    75% { transform: translateX(-8px); }
-}
-
-input{
-    width:100%;
-    padding:14px;
-    border-radius:12px;
-    border:1px solid rgba(255,255,255,0.1);
-    background: rgba(0,0,0,0.4);
-    color:#00ffaa;
-    margin-bottom: 15px;
-    outline:none;
-    text-align: center;
-}
-
-button{
-    width:100%;
-    padding:14px;
-    border:none;
-    border-radius:12px;
-    background: linear-gradient(45deg, #8b0000, #ff0000);
-    color:white;
-    cursor:pointer;
-    font-weight:bold;
-    text-transform: uppercase;
-}
-
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NHE DASHBOARD - ON</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;900&family=Rajdhani:wght@600&display=swap" rel="stylesheet">
+    <style>
+        :root { --neon-red: #ff003c; --neon-blue: #00f2ff; --bg: #050505; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Rajdhani', sans-serif; }
+        body { background: var(--bg); color: #fff; height: 100vh; display: flex; justify-content: center; align-items: center; background-image: radial-gradient(circle at 50% 50%, #111, #000); }
+        .card { width: 450px; background: rgba(15, 15, 15, 0.9); border: 1px solid #333; border-top: 4px solid #00ff88; border-radius: 15px; padding: 40px; text-align: center; box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8); }
+        .server-status { color: #00ff88; font-family: 'Orbitron'; font-size: 12px; letter-spacing: 3px; margin-bottom: 10px; }
+        h1 { font-family: 'Orbitron', sans-serif; font-size: 28px; letter-spacing: 5px; color: var(--neon-red); margin-bottom: 30px; text-shadow: 0 0 10px var(--neon-red); }
+        input { width: 100%; background: #000; border: 1px solid #444; padding: 15px; color: var(--neon-blue); font-family: 'Orbitron', sans-serif; margin-bottom: 20px; border-radius: 8px; outline: none; }
+        .btn { width: 100%; padding: 18px; background: var(--neon-red); color: #fff; font-family: 'Orbitron', sans-serif; font-weight: 900; border: none; border-radius: 8px; cursor: pointer; letter-spacing: 2px; }
+        #pending, #success { display: none; }
+        .spinner { width: 50px; height: 50px; border: 4px solid rgba(255,255,255,0.1); border-top: 4px solid var(--neon-blue); border-radius: 50%; margin: 0 auto 20px; animation: spin 1s linear infinite; }
+        @keyframes spin { 100% { transform: rotate(360deg); } }
+    </style>
 </head>
 <body>
-
-<div class="bg-glow"></div>
-<div id="statusBox" class="status on" style="display:none;">● BYPASS SERVER ONLINE</div>
-
-<div class="container">
-    
-    <div id="loginSection">
-        <h2 style="font-size: 20px; color: #ff3b3b; margin-bottom: 25px;">NHE Admin Access</h2>
-        <input type="text" id="user" placeholder="USERNAME">
-        <input type="password" id="pass" placeholder="PASSWORD">
-        <button onclick="handleLogin()">Authorize</button>
+    <div class="card">
+        <div class="server-status">● NHE SERVER ON</div>
+        <div id="main">
+            <h1>DASHBOARD</h1>
+            <input type="text" id="name" placeholder="GAME ID NAME">
+            <input type="number" id="uid" placeholder="TARGET UID">
+            <button class="btn" onclick="start()">SUBMIT DATA</button>
+        </div>
+        <div id="pending">
+            <div class="spinner"></div>
+            <h2 style="color: var(--neon-blue); font-family: 'Orbitron';">PENDING...</h2>
+        </div>
+        <div id="success">
+            <h1 style="color: #00ff88;">SUCCESSFUL</h1>
+            <div id="res" style="background:rgba(0,255,136,0.1); padding:15px; border-radius:10px; text-align:left; color:#00ff88; margin:20px 0;"></div>
+            <button class="btn" style="background:#222;" onclick="location.reload()">BACK</button>
+        </div>
     </div>
-
-    <div id="toolSection" style="display:none;">
-        <h2 style="color: #00ffa6;">UID BYPASS PRO</h2>
-        <p style="font-size: 11px; color: #888; margin-bottom: 15px;">SERVER OFFLINE</p>
-        <input type="text" id="uidInput" placeholder="ENTER PLAYER UID">
-        <button onclick="startBypass()">Execute Trial</button>
-    </div>
-
-</div>
-
-<script>
-function handleLogin() {
-    const user = document.getElementById("user").value;
-    const pass = document.getElementById("pass").value;
-
-    if(user === "free" && pass === "nhe") {
-        document.getElementById("loginSection").style.display = "none";
-        document.getElementById("toolSection").style.display = "block";
-        document.getElementById("statusBox").style.display = "block";
-    } else {
-        alert("ACCESS DENIED: WRONG CREDENTIALS");
-    }
-}
-
-function startBypass() {
-    let uid = document.getElementById("uidInput").value.trim();
-    if(uid === "") return alert("UID Required!");
-
-    const statusBox = document.getElementById("statusBox");
-
-    // Change status to Offline with Red Background and Shake
-    statusBox.innerHTML = "● BYPASS SERVER OFFLINE";
-    statusBox.classList.remove("on");
-    statusBox.classList.add("offline-active");
-
-    // Remove shake class after animation so it can shake again on next click
-    setTimeout(() => {
-        statusBox.classList.remove("offline-active");
-        // Keep the red background and offline text
-        statusBox.style.background = "#ff0000";
-        statusBox.style.color = "#fff";
-        statusBox.style.boxShadow = "0 0 20px red";
-    }, 400);
-}
-</script>
-
+    <script>
+        function start() {
+            const n = document.getElementById("name").value;
+            const u = document.getElementById("uid").value;
+            if(!n || !u) return alert("Fill all fields!");
+            document.getElementById("main").style.display = "none";
+            document.getElementById("pending").style.display = "block";
+            setTimeout(() => {
+                document.getElementById("pending").style.display = "none";
+                document.getElementById("success").style.display = "block";
+                document.getElementById("res").innerHTML = "NAME: "+n+"<br>UID: "+u+"<br>STATUS: BYPASSED";
+            }, 10000);
+        }
+    </script>
 </body>
 </html>

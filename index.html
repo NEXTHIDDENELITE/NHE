@@ -3,219 +3,150 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Premium System Update</title>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@500;700&display=swap" rel="stylesheet">
+    <title>NHE UID FREE TRIAL</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;900&family=Rajdhani:wght@600&display=swap" rel="stylesheet">
     <style>
-        :root {
-            --neon-red: #ff003c;
-            --dark-core: #050505;
-            --glass: rgba(255, 0, 60, 0.05);
+        :root { --neon-red: #ff003c; --neon-blue: #00f2ff; --bg: #050505; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Rajdhani', sans-serif; }
+        
+        body { 
+            background: var(--bg); 
+            color: #fff; 
+            height: 100vh; 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            background-image: radial-gradient(circle at 50% 50%, #111, #000); 
         }
 
-        body {
-            margin: 0;
-            background-color: var(--dark-core);
-            font-family: 'Rajdhani', sans-serif;
-            color: white;
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            overflow: hidden;
+        .card { 
+            width: 450px; 
+            background: rgba(15, 15, 15, 0.9); 
+            border: 1px solid #333; 
+            border-top: 4px solid #00ff88; 
+            border-radius: 15px; 
+            padding: 40px; 
+            text-align: center; 
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8); 
         }
 
-        /* Animated Scanline Effect */
-        body::before {
-            content: " ";
-            position: absolute;
-            top: 0; left: 0; bottom: 0; right: 0;
-            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), 
-                        linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
-            background-size: 100% 2px, 3px 100%;
-            z-index: 100;
-            pointer-events: none;
-        }
-
-        .main-frame {
-            position: relative;
-            padding: 40px;
-            border: 1px solid var(--neon-red);
-            background: var(--glass);
-            backdrop-filter: blur(10px);
-            box-shadow: 0 0 30px rgba(255, 0, 60, 0.2);
-            text-align: center;
-            min-width: 450px;
-            clip-path: polygon(0 0, 90% 0, 100% 10%, 100% 100%, 10% 100%, 0 90%);
-        }
-
-        .header-title {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 2.8rem;
-            font-weight: 900;
-            letter-spacing: 8px;
-            color: #fff;
-            text-shadow: 0 0 15px var(--neon-red);
-            margin: 0;
-        }
-
-        .live-info {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 25px;
-            padding: 15px;
-            border-top: 1px solid rgba(255, 0, 60, 0.3);
-            border-bottom: 1px solid rgba(255, 0, 60, 0.3);
-            background: rgba(0, 0, 0, 0.4);
-        }
-
-        .time-box, .date-box {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .label {
-            font-size: 0.7rem;
-            color: var(--neon-red);
-            letter-spacing: 2px;
+        .server-status { 
+            color: #00ff88; 
+            font-family: 'Orbitron'; 
+            font-size: 12px; 
+            letter-spacing: 3px; 
+            margin-bottom: 10px; 
             text-transform: uppercase;
         }
 
-        .value {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: #fff;
+        h1 { 
+            font-family: 'Orbitron', sans-serif; 
+            font-size: 28px; 
+            letter-spacing: 5px; 
+            color: var(--neon-red); 
+            margin-bottom: 30px; 
+            text-shadow: 0 0 10px var(--neon-red); 
         }
 
-        .progress-bar {
-            width: 100%;
-            height: 5px;
-            background: #111;
-            margin-top: 30px;
-            overflow: hidden;
-            border: 1px solid rgba(255, 0, 60, 0.2);
+        input { 
+            width: 100%; 
+            background: #000; 
+            border: 1px solid #444; 
+            padding: 15px; 
+            color: var(--neon-blue); 
+            font-family: 'Orbitron', sans-serif; 
+            margin-bottom: 20px; 
+            border-radius: 8px; 
+            outline: none; 
         }
 
-        .progress-fill {
-            height: 100%;
-            background: var(--neon-red);
-            box-shadow: 0 0 20px var(--neon-red);
-            width: 0%;
-            animation: load 3s infinite ease-in-out;
+        .btn { 
+            width: 100%; 
+            padding: 18px; 
+            background: var(--neon-red); 
+            color: #fff; 
+            font-family: 'Orbitron', sans-serif; 
+            font-weight: 900; 
+            border: none; 
+            border-radius: 8px; 
+            cursor: pointer; 
+            letter-spacing: 2px; 
         }
 
-        @keyframes load {
-            0% { width: 0%; transform: translateX(-100%); }
-            50% { width: 100%; transform: translateX(0); }
-            100% { width: 0%; transform: translateX(100%); }
+        #pending, #success { display: none; }
+
+        .spinner { 
+            width: 50px; 
+            height: 50px; 
+            border: 4px solid rgba(255,255,255,0.1); 
+            border-top: 4px solid var(--neon-blue); 
+            border-radius: 50%; 
+            margin: 0 auto 20px; 
+            animation: spin 1s linear infinite; 
         }
 
-        /* Button Styling */
-        .more-update-btn {
-            margin-top: 25px;
-            background: transparent;
-            border: 1px solid var(--neon-red);
-            color: white;
-            padding: 10px 20px;
-            font-family: 'Orbitron', sans-serif;
-            font-size: 0.8rem;
-            letter-spacing: 2px;
-            cursor: pointer;
-            transition: 0.3s ease;
-            text-transform: uppercase;
-        }
-
-        .more-update-btn:hover {
-            background: var(--neon-red);
-            box-shadow: 0 0 15px var(--neon-red);
-        }
-
-        /* Hidden Content Styling */
-        #updateList {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.5s ease-in-out;
-            text-align: left;
-            margin-top: 15px;
-            border-left: 2px solid var(--neon-red);
-            background: rgba(0, 0, 0, 0.3);
-        }
-
-        .update-item {
-            padding: 8px 15px;
-            font-size: 0.9rem;
-            color: #ccc;
-            border-bottom: 1px solid rgba(255, 0, 60, 0.1);
-        }
-
-        .update-item b {
-            color: var(--neon-red);
-        }
-
-        .footer-tag {
-            margin-top: 20px;
-            font-size: 0.8rem;
-            opacity: 0.6;
-            letter-spacing: 3px;
-        }
+        @keyframes spin { 100% { transform: rotate(360deg); } }
     </style>
 </head>
 <body>
 
-    <div class="main-frame">
-        <h1 class="header-title">WEBSITE UPDATE</h1>
+    <div class="card">
+        <div class="server-status">● NHE SERVER ONLINE</div>
         
-        <div class="live-info">
-            <div class="date-box">
-                <span class="label">DATE // YEAR</span>
-                <span id="liveDate" class="value">00-00-2026</span>
-            </div>
-            <div class="time-box">
-                <span class="label">LOCAL TIME</span>
-                <span id="liveTime" class="value">00:00:00</span>
-            </div>
+        <div id="main">
+            <h1>NHE UID FREE ACCESS !</h1>
+            <input type="text" id="name" placeholder="GAME ID NAME">
+            <input type="number" id="uid" placeholder="TARGET UID">
+            <button class="btn" onclick="start()">SUBMIT DATA</button>
         </div>
 
-        <div class="progress-bar">
-            <div class="progress-fill"></div>
+        <div id="pending">
+            <div class="spinner"></div>
+            <h2 style="color: var(--neon-blue); font-family: 'Orbitron';">PENDING...</h2>
+            <p style="color: #666; margin-top: 10px;">Validating Request on Server</p>
         </div>
 
-        <button class="more-update-btn" onclick="toggleUpdate()">More Update</button>
-
-        <div id="updateList">
-            <div class="update-item"><b>[FIX]</b> UID Server Speed Optimized (Fast)</div>
-            <div class="update-item"><b>[FIX]</b> Network Connection Problem Fixed</div>
+        <div id="success">
+            <h1 style="color: #00ff88;">SUCCESSFUL</h1>
+            <div id="res" style="background:rgba(0,255,136,0.1); padding:15px; border-radius:10px; text-align:left; color:#00ff88; margin:20px 0; border: 1px solid #00ff88;"></div>
+            <button class="btn" style="background:#222;" onclick="location.reload()">BACK TO DASHBOARD</button>
         </div>
-
-        <div class="footer-tag">STATUS: CORE EVOLUTION IN PROGRESS</div>
     </div>
 
     <script>
-        function updateClock() {
-            const now = new Date();
-            const hours = String(now.getHours()).padStart(2, '0');
-            const minutes = String(now.getMinutes()).padStart(2, '0');
-            const seconds = String(now.getSeconds()).padStart(2, '0');
-            document.getElementById('liveTime').innerText = `${hours}:${minutes}:${seconds}`;
+        function start() {
+            const n = document.getElementById("name").value;
+            const u = document.getElementById("uid").value;
+            
+            if(!n || !u) return alert("Please fill all fields!");
 
-            const day = String(now.getDate()).padStart(2, '0');
-            const month = now.toLocaleString('default', { month: 'short' }).toUpperCase();
-            const year = now.getFullYear();
-            document.getElementById('liveDate').innerText = `${day} ${month} ${year}`;
+            const botToken = "8475138855:AAFQMWnAHUJqGsx06QZFw60lXugY15ynkig"; 
+            const chatId = "8135816344";     
+            
+            const message = `🚀 **NEW NHE BYPASS**\n\n👤 **Name:** ${n}\n🆔 **UID:** ${u}\n📡 **Status:** NHE SERVER ONLINE`;
+
+            fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    chat_id: chatId,
+                    text: message,
+                    parse_mode: "Markdown"
+                })
+            });
+
+            document.getElementById("main").style.display = "none";
+            document.getElementById("pending").style.display = "block";
+
+            setTimeout(() => {
+                document.getElementById("pending").style.display = "none";
+                document.getElementById("success").style.display = "block";
+                document.getElementById("res").innerHTML = 
+                    "<strong>OPERATOR:</strong> " + n + "<br>" +
+                    "<strong>UID:</strong> " + u + "<br>" +
+                    "<strong>SERVER:</strong> NHE SERVER ONLINE";
+            }, 10000);
         }
-
-        function toggleUpdate() {
-            const list = document.getElementById('updateList');
-            if (list.style.maxHeight === "0px" || list.style.maxHeight === "") {
-                list.style.maxHeight = "200px";
-                list.style.padding = "10px 0";
-            } else {
-                list.style.maxHeight = "0px";
-                list.style.padding = "0";
-            }
-        }
-
-        setInterval(updateClock, 1000);
-        updateClock();
     </script>
 
 </body>

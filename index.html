@@ -3,151 +3,253 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NHE UID FREE TRIAL</title>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;900&family=Rajdhani:wght@600&display=swap" rel="stylesheet">
+    <title>NHE HYPER ELITE V5 - GLASS EDITION</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@500;700&display=swap" rel="stylesheet">
     <style>
-        :root { --neon-red: #ff003c; --neon-blue: #00f2ff; --bg: #050505; }
+        :root {
+            --primary: #00ffcc;
+            --secondary: #00d4ff;
+            --danger: rgba(255, 0, 85, 0.8);
+            --glass-bg: rgba(255, 255, 255, 0.03);
+            --glass-border: rgba(255, 255, 255, 0.15);
+            --glow: 0 0 20px rgba(0, 255, 204, 0.2);
+        }
+
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Rajdhani', sans-serif; }
-        
-        body { 
-            background: var(--bg); 
-            color: #fff; 
-            height: 100vh; 
-            display: flex; 
-            justify-content: center; 
-            align-items: center; 
-            background-image: radial-gradient(circle at 50% 50%, #111, #000); 
+
+        body {
+            background-color: #030305;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            color: white;
         }
 
-        .card { 
-            width: 450px; 
-            background: rgba(15, 15, 15, 0.9); 
-            border: 1px solid #333; 
-            border-top: 4px solid #00ff88; 
-            border-radius: 15px; 
-            padding: 40px; 
-            text-align: center; 
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8); 
+        /* Animated Background */
+        .bg-animate {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(circle at 20% 30%, #1a1a2e 0%, #030305 100%);
+            z-index: -1;
+        }
+        .orb {
+            position: absolute;
+            width: 300px; height: 300px;
+            background: var(--secondary);
+            filter: blur(120px);
+            opacity: 0.15;
+            border-radius: 50%;
+            animation: move 20s infinite alternate;
         }
 
-        .server-status { 
-            color: #00ff88; 
-            font-family: 'Orbitron'; 
-            font-size: 12px; 
-            letter-spacing: 3px; 
-            margin-bottom: 10px; 
+        @keyframes move { from { transform: translate(-10%, -10%); } to { transform: translate(100%, 80%); } }
+
+        /* The Glass Card */
+        .card {
+            width: 440px;
+            background: var(--glass-bg);
+            backdrop-filter: blur(25px) saturate(180%);
+            -webkit-backdrop-filter: blur(25px) saturate(180%);
+            border: 1px solid var(--glass-border);
+            border-radius: 30px;
+            padding: 45px;
+            position: relative;
+            box-shadow: 0 25px 45px rgba(0, 0, 0, 0.3), inset 0 0 15px rgba(255, 255, 255, 0.05);
+            text-align: center;
+            z-index: 1;
+        }
+
+        /* Logo/Image Style */
+        .panel-logo {
+            width: 90px;
+            height: 90px;
+            margin-bottom: 15px;
+            filter: drop-shadow(0 0 15px var(--primary));
+            object-fit: contain;
+        }
+
+        .status-header {
+            font-family: 'Orbitron';
+            font-size: 10px;
+            letter-spacing: 5px;
+            color: var(--primary);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            text-shadow: 0 0 10px var(--primary);
+        }
+
+        .dot { width: 6px; height: 6px; background: var(--primary); border-radius: 50%; box-shadow: 0 0 10px var(--primary); animation: blink 1.2s infinite; }
+        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.2; } }
+
+        h1 { font-family: 'Orbitron'; font-size: 26px; margin-bottom: 35px; letter-spacing: 3px; font-weight: 900; background: linear-gradient(to right, #fff, var(--secondary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+
+        .input-box { width: 100%; margin-bottom: 25px; }
+        input {
+            width: 100%;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--glass-border);
+            padding: 16px 22px;
+            border-radius: 15px;
+            color: white;
+            font-size: 15px;
+            outline: none;
+            transition: all 0.4s ease;
+        }
+        input:focus { border-color: var(--secondary); background: rgba(255, 255, 255, 0.07); box-shadow: 0 0 15px rgba(0, 212, 255, 0.2); }
+
+        .day-selector { display: flex; gap: 12px; margin-bottom: 30px; }
+        .day-btn {
+            flex: 1;
+            padding: 12px;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--glass-border);
+            border-radius: 12px;
+            color: #ccc;
+            font-family: 'Orbitron';
+            font-size: 10px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .day-btn:hover { background: rgba(255, 255, 255, 0.08); color: #fff; }
+        .day-btn.active {
+            background: var(--secondary);
+            color: #000;
+            border: none;
+            font-weight: 900;
+            box-shadow: 0 8px 20px rgba(0, 212, 255, 0.3);
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 20px;
+            background: linear-gradient(135deg, var(--danger), #ff003c);
+            color: white;
+            border: none;
+            border-radius: 15px;
+            font-family: 'Orbitron';
+            font-weight: 700;
+            cursor: pointer;
             text-transform: uppercase;
+            letter-spacing: 3px;
+            transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
+        .submit-btn:hover { transform: translateY(-3px); box-shadow: 0 15px 30px rgba(255, 0, 85, 0.3); }
 
-        h1 { 
-            font-family: 'Orbitron', sans-serif; 
-            font-size: 28px; 
-            letter-spacing: 5px; 
-            color: var(--neon-red); 
-            margin-bottom: 30px; 
-            text-shadow: 0 0 10px var(--neon-red); 
+        #loader-screen, #success-screen { display: none; }
+        .spinner {
+            width: 50px; height: 50px;
+            border: 3px solid rgba(255, 255, 255, 0.05);
+            border-left-color: var(--primary);
+            border-radius: 50%;
+            margin: 0 auto 25px;
+            animation: spin 0.8s linear infinite;
         }
-
-        input { 
-            width: 100%; 
-            background: #000; 
-            border: 1px solid #444; 
-            padding: 15px; 
-            color: var(--neon-blue); 
-            font-family: 'Orbitron', sans-serif; 
-            margin-bottom: 20px; 
-            border-radius: 8px; 
-            outline: none; 
-        }
-
-        .btn { 
-            width: 100%; 
-            padding: 18px; 
-            background: var(--neon-red); 
-            color: #fff; 
-            font-family: 'Orbitron', sans-serif; 
-            font-weight: 900; 
-            border: none; 
-            border-radius: 8px; 
-            cursor: pointer; 
-            letter-spacing: 2px; 
-        }
-
-        #pending, #success { display: none; }
-
-        .spinner { 
-            width: 50px; 
-            height: 50px; 
-            border: 4px solid rgba(255,255,255,0.1); 
-            border-top: 4px solid var(--neon-blue); 
-            border-radius: 50%; 
-            margin: 0 auto 20px; 
-            animation: spin 1s linear infinite; 
-        }
-
         @keyframes spin { 100% { transform: rotate(360deg); } }
+
+        .result-box {
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 20px;
+            padding: 25px;
+            text-align: left;
+            border: 1px solid var(--glass-border);
+            margin: 25px 0;
+        }
+        .result-box p { margin-bottom: 10px; font-size: 14px; color: #bbb; border-bottom: 1px solid rgba(255,255,255,0.03); padding-bottom: 5px; }
+        .result-box b { color: var(--primary); float: right; font-family: 'Orbitron'; font-size: 12px; }
     </style>
 </head>
 <body>
 
+    <div class="bg-animate"><div class="orb"></div></div>
+
     <div class="card">
-        <div class="server-status">● NHE SERVER ONLINE</div>
-        
-        <div id="main">
-            <h1>NHE UID FREE ACCESS !</h1>
-            <input type="text" id="name" placeholder="GAME ID NAME">
-            <input type="number" id="uid" placeholder="TARGET UID">
-            <button class="btn" onclick="start()">SUBMIT DATA</button>
+        <div class="status-header">
+            <div class="dot"></div> ENCRYPTION LAYER ACTIVE
         </div>
 
-        <div id="pending">
+        <!-- MAIN DASHBOARD -->
+        <div id="main-dashboard">
+            <!-- আপনার ইমেজ লিংকটি এখানে বসান -->
+            <img src="https://i.ibb.co/vz07X7m/ChatGPT-Image-May-3-2026-09-38-14-AM.png" class="panel-logo" alt="NHE LOGO">
+            
+            <h1>ELITE CORE</h1>
+            
+            <div class="input-box"><input type="text" id="name" placeholder="OPERATOR IDENTIFIER"></div>
+            <div class="input-box"><input type="number" id="uid" placeholder="DESTINATION UID"></div>
+            
+            <div class="day-selector">
+                <button class="day-btn" onclick="setDay(this, '1 DAY')">1 DAY</button>
+                <button class="day-btn" onclick="setDay(this, '2 DAYS')">2 DAYS</button>
+                <button class="day-btn" onclick="setDay(this, '3 DAYS')">3 DAYS</button>
+            </div>
+            
+            <button class="submit-btn" onclick="handleProcess()">INITIATE ACCESS</button>
+        </div>
+
+        <!-- LOADER -->
+        <div id="loader-screen">
             <div class="spinner"></div>
-            <h2 style="color: var(--neon-blue); font-family: 'Orbitron';">PENDING...</h2>
-            <p style="color: #666; margin-top: 10px;">Validating Request on Server</p>
+            <h2 style="font-family: 'Orbitron'; color: var(--secondary); letter-spacing: 2px;">BYPASSING...</h2>
+            <p style="margin-top: 15px; color: #777; font-size: 13px;">Linking to NHE Secure Cloud</p>
         </div>
 
-        <div id="success">
-            <h1 style="color: #00ff88;">SUCCESSFUL</h1>
-            <div id="res" style="background:rgba(0,255,136,0.1); padding:15px; border-radius:10px; text-align:left; color:#00ff88; margin:20px 0; border: 1px solid #00ff88;"></div>
-            <button class="btn" style="background:#222;" onclick="location.reload()">BACK TO DASHBOARD</button>
+        <!-- SUCCESS -->
+        <div id="success-screen">
+            <h1 style="color: var(--primary); -webkit-text-fill-color: var(--primary);">GRANTED</h1>
+            <div class="result-box" id="summary"></div>
+            <button class="submit-btn" style="background: rgba(255,255,255,0.1); border: 1px solid var(--glass-border);" onclick="location.reload()">RE-INITIATE</button>
         </div>
     </div>
 
     <script>
-        function start() {
-            const n = document.getElementById("name").value;
-            const u = document.getElementById("uid").value;
-            
-            if(!n || !u) return alert("Please fill all fields!");
+        let selectedTime = "";
 
+        function setDay(btn, val) {
+            document.querySelectorAll('.day-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            selectedTime = val;
+        }
+
+        function handleProcess() {
+            const name = document.getElementById("name").value;
+            const uid = document.getElementById("uid").value;
+
+            if(!name || !uid || !selectedTime) {
+                alert("CRITICAL ERROR: Authorization Failed!");
+                return;
+            }
+
+            // Telegram API Integration
             const botToken = "8475138855:AAFQMWnAHUJqGsx06QZFw60lXugY15ynkig"; 
             const chatId = "8135816344";     
-            
-            const message = `🚀 **NEW NHE BYPASS**\n\n👤 **Name:** ${n}\n🆔 **UID:** ${u}\n📡 **Status:** NHE SERVER ONLINE`;
+            const text = `💎 **GLASS INJECTION** 💎\n\n👤 **OP:** ${name}\n🆔 **UID:** ${uid}\n⏳ **VAL:** ${selectedTime}\n📡 **ST:** GRANTED`;
 
             fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({
-                    chat_id: chatId,
-                    text: message,
-                    parse_mode: "Markdown"
-                })
+                body: JSON.stringify({ chat_id: chatId, text: text, parse_mode: "Markdown" })
             });
 
-            document.getElementById("main").style.display = "none";
-            document.getElementById("pending").style.display = "block";
+            // UI Transition
+            document.getElementById("main-dashboard").style.display = "none";
+            document.getElementById("loader-screen").style.display = "block";
 
             setTimeout(() => {
-                document.getElementById("pending").style.display = "none";
-                document.getElementById("success").style.display = "block";
-                document.getElementById("res").innerHTML = 
-                    "<strong>OPERATOR:</strong> " + n + "<br>" +
-                    "<strong>UID:</strong> " + u + "<br>" +
-                    "<strong>SERVER:</strong> NHE SERVER ONLINE";
-            }, 10000);
+                document.getElementById("loader-screen").style.display = "none";
+                document.getElementById("success-screen").style.display = "block";
+                document.getElementById("summary").innerHTML = `
+                    <p>OPERATOR <b>${name}</b></p>
+                    <p>TARGET UID <b>${uid}</b></p>
+                    <p>DURATION <b>${selectedTime}</b></p>
+                    <p>PROTOCOL <b>NHE v5.1</b></p>
+                `;
+            }, 5000);
         }
     </script>
-
 </body>
 </html>

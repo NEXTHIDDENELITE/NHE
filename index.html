@@ -48,70 +48,93 @@
 
         /* The Glass Card */
         .card {
-            width: 440px;
+            width: 460px;
             background: var(--glass-bg);
             backdrop-filter: blur(25px) saturate(180%);
             -webkit-backdrop-filter: blur(25px) saturate(180%);
             border: 1px solid var(--glass-border);
             border-radius: 30px;
-            padding: 45px;
+            padding: 40px;
             position: relative;
             box-shadow: 0 25px 45px rgba(0, 0, 0, 0.3), inset 0 0 15px rgba(255, 255, 255, 0.05);
-            text-align: center;
             z-index: 1;
         }
 
-        /* Logo/Image Style */
+        /* Header Section with Left Logo */
+        .header-container {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 30px;
+            text-align: left;
+        }
+
         .panel-logo {
-            width: 90px;
-            height: 90px;
-            margin-bottom: 15px;
-            filter: drop-shadow(0 0 15px var(--primary));
-            object-fit: contain;
+            width: 80px;
+            height: 80px;
+            border-radius: 50%; /* গোল করার জন্য */
+            border: 2px solid var(--primary);
+            padding: 5px;
+            filter: drop-shadow(0 0 10px var(--primary));
+            object-fit: cover;
+            background: rgba(0, 0, 0, 0.3);
+        }
+
+        .header-text {
+            display: flex;
+            flex-direction: column;
         }
 
         .status-header {
             font-family: 'Orbitron';
-            font-size: 10px;
-            letter-spacing: 5px;
+            font-size: 8px;
+            letter-spacing: 2px;
             color: var(--primary);
-            margin-bottom: 15px;
             display: flex;
             align-items: center;
-            justify-content: center;
-            gap: 10px;
-            text-shadow: 0 0 10px var(--primary);
+            gap: 8px;
+            text-shadow: 0 0 5px var(--primary);
+            margin-bottom: 5px;
         }
 
-        .dot { width: 6px; height: 6px; background: var(--primary); border-radius: 50%; box-shadow: 0 0 10px var(--primary); animation: blink 1.2s infinite; }
+        .dot { width: 5px; height: 5px; background: var(--primary); border-radius: 50%; box-shadow: 0 0 8px var(--primary); animation: blink 1.2s infinite; }
         @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.2; } }
 
-        h1 { font-family: 'Orbitron'; font-size: 26px; margin-bottom: 35px; letter-spacing: 3px; font-weight: 900; background: linear-gradient(to right, #fff, var(--secondary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        h1 { 
+            font-family: 'Orbitron'; 
+            font-size: 22px; 
+            letter-spacing: 2px; 
+            font-weight: 900; 
+            background: linear-gradient(to right, #fff, var(--secondary)); 
+            -webkit-background-clip: text; 
+            -webkit-text-fill-color: transparent; 
+        }
 
-        .input-box { width: 100%; margin-bottom: 25px; }
+        /* Form Styling */
+        .input-box { width: 100%; margin-bottom: 20px; }
         input {
             width: 100%;
             background: rgba(255, 255, 255, 0.03);
             border: 1px solid var(--glass-border);
-            padding: 16px 22px;
-            border-radius: 15px;
+            padding: 14px 20px;
+            border-radius: 12px;
             color: white;
-            font-size: 15px;
+            font-size: 14px;
             outline: none;
             transition: all 0.4s ease;
         }
         input:focus { border-color: var(--secondary); background: rgba(255, 255, 255, 0.07); box-shadow: 0 0 15px rgba(0, 212, 255, 0.2); }
 
-        .day-selector { display: flex; gap: 12px; margin-bottom: 30px; }
+        .day-selector { display: flex; gap: 10px; margin-bottom: 25px; }
         .day-btn {
             flex: 1;
-            padding: 12px;
+            padding: 10px;
             background: rgba(255, 255, 255, 0.02);
             border: 1px solid var(--glass-border);
-            border-radius: 12px;
+            border-radius: 10px;
             color: #ccc;
             font-family: 'Orbitron';
-            font-size: 10px;
+            font-size: 9px;
             cursor: pointer;
             transition: 0.3s;
         }
@@ -121,32 +144,33 @@
             color: #000;
             border: none;
             font-weight: 900;
-            box-shadow: 0 8px 20px rgba(0, 212, 255, 0.3);
+            box-shadow: 0 8px 15px rgba(0, 212, 255, 0.3);
         }
 
         .submit-btn {
             width: 100%;
-            padding: 20px;
+            padding: 18px;
             background: linear-gradient(135deg, var(--danger), #ff003c);
             color: white;
             border: none;
-            border-radius: 15px;
+            border-radius: 12px;
             font-family: 'Orbitron';
             font-weight: 700;
             cursor: pointer;
             text-transform: uppercase;
-            letter-spacing: 3px;
+            letter-spacing: 2px;
             transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
         .submit-btn:hover { transform: translateY(-3px); box-shadow: 0 15px 30px rgba(255, 0, 85, 0.3); }
 
-        #loader-screen, #success-screen { display: none; }
+        /* Loader & Result */
+        #loader-screen, #success-screen { display: none; text-align: center; }
         .spinner {
             width: 50px; height: 50px;
             border: 3px solid rgba(255, 255, 255, 0.05);
             border-left-color: var(--primary);
             border-radius: 50%;
-            margin: 0 auto 25px;
+            margin: 20px auto;
             animation: spin 0.8s linear infinite;
         }
         @keyframes spin { 100% { transform: rotate(360deg); } }
@@ -154,13 +178,13 @@
         .result-box {
             background: rgba(255, 255, 255, 0.02);
             border-radius: 20px;
-            padding: 25px;
+            padding: 20px;
             text-align: left;
             border: 1px solid var(--glass-border);
-            margin: 25px 0;
+            margin: 20px 0;
         }
-        .result-box p { margin-bottom: 10px; font-size: 14px; color: #bbb; border-bottom: 1px solid rgba(255,255,255,0.03); padding-bottom: 5px; }
-        .result-box b { color: var(--primary); float: right; font-family: 'Orbitron'; font-size: 12px; }
+        .result-box p { margin-bottom: 8px; font-size: 13px; color: #bbb; border-bottom: 1px solid rgba(255,255,255,0.03); padding-bottom: 4px; }
+        .result-box b { color: var(--primary); float: right; font-family: 'Orbitron'; font-size: 11px; }
     </style>
 </head>
 <body>
@@ -168,16 +192,19 @@
     <div class="bg-animate"><div class="orb"></div></div>
 
     <div class="card">
-        <div class="status-header">
-            <div class="dot"></div> ENCRYPTION LAYER ACTIVE
-        </div>
-
         <!-- MAIN DASHBOARD -->
         <div id="main-dashboard">
-            <!-- আপনার ইমেজ লিংকটি এখানে বসান -->
-            <img src="https://i.ibb.co/vz07X7m/ChatGPT-Image-May-3-2026-09-38-14-AM.png" class="panel-logo" alt="NHE LOGO">
-            
-            <h1>ELITE CORE</h1>
+            <div class="header-container">
+                <!-- গোল ইমেজ এবং বাম পাশে পজিশন -->
+                <img src="logo.png" class="panel-logo" alt="NHE">
+                
+                <div class="header-text">
+                    <div class="status-header">
+                        <div class="dot"></div> ENCRYPTION ACTIVE
+                    </div>
+                    <h1>ELITE CORE</h1>
+                </div>
+            </div>
             
             <div class="input-box"><input type="text" id="name" placeholder="OPERATOR IDENTIFIER"></div>
             <div class="input-box"><input type="number" id="uid" placeholder="DESTINATION UID"></div>
@@ -200,7 +227,7 @@
 
         <!-- SUCCESS -->
         <div id="success-screen">
-            <h1 style="color: var(--primary); -webkit-text-fill-color: var(--primary);">GRANTED</h1>
+            <h1 style="color: var(--primary); -webkit-text-fill-color: var(--primary); text-align: center; margin-bottom: 10px;">GRANTED</h1>
             <div class="result-box" id="summary"></div>
             <button class="submit-btn" style="background: rgba(255,255,255,0.1); border: 1px solid var(--glass-border);" onclick="location.reload()">RE-INITIATE</button>
         </div>

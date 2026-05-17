@@ -1,1 +1,643 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEXT HIDDEN ELITE</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Audiowide&family=Inter:wght@300;500;700&family=Rajdhani:wght@500;700&display=swap" rel="stylesheet">
 
+    <style>
+        :root {
+            /* Premium Silver/Dark/Black Color Palette */
+            --bg-primary: #0a0a0c;
+            --bg-secondary: #121216;
+            --bg-card: #1a1a20;
+            
+            --text-primary: #f0f0f5;
+            --text-secondary: #9aa0b1;
+            
+            --accent-silver: #c0c5ce;
+            --accent-bright-silver: #ffffff;
+            --accent-dark-silver: #4a4e59;
+            
+            --glow-silver: rgba(192, 197, 206, 0.4);
+            --glow-strong: rgba(255, 255, 255, 0.6);
+            
+            --border-color: rgba(192, 197, 206, 0.15);
+            
+            --transition-smooth: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            overflow-x: hidden;
+            background-image: 
+                radial-gradient(circle at 15% 50%, rgba(192, 197, 206, 0.03), transparent 25%),
+                radial-gradient(circle at 85% 30%, rgba(192, 197, 206, 0.03), transparent 25%);
+            cursor: default;
+        }
+
+        /* Premium Silver Glow effect on mouse move - handled by JS */
+        #cursor-glow {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, var(--glow-silver) 0%, transparent 60%);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9999;
+            transform: translate(-50%, -50%);
+            mix-blend-mode: screen;
+            opacity: 0.15;
+            transition: opacity 0.3s;
+        }
+
+        a { text-decoration: none; color: inherit; }
+        ul { list-style: none; padding: 0; margin: 0; }
+
+        /* --- Minimalist Premium Navbar --- */
+        .navbar {
+            background: rgba(10, 10, 12, 0.8);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            padding: 20px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid var(--border-color);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .brand-logo {
+            font-family: 'Audiowide', cursive;
+            font-size: 1.6rem;
+            color: var(--accent-bright-silver);
+            letter-spacing: 3px;
+            text-shadow: 0 0 10px var(--glow-silver);
+        }
+
+        .nav-links { display: flex; gap: 25px; align-items: center; }
+        .nav-item {
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 1rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-secondary);
+            cursor: pointer;
+            transition: var(--transition-smooth);
+            position: relative;
+        }
+        
+        .nav-item::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: var(--accent-bright-silver);
+            transition: var(--transition-smooth);
+            transform: translateX(-50%);
+            box-shadow: 0 0 8px var(--accent-bright-silver);
+        }
+
+        .nav-item:hover { color: var(--accent-bright-silver); text-shadow: 0 0 8px var(--glow-silver); }
+        .nav-item:hover::after { width: 100%; }
+
+        /* --- Hero Section --- */
+        .hero-header {
+            text-align: center;
+            padding: 80px 20px 50px;
+            position: relative;
+        }
+        
+        .hero-header h1 {
+            font-family: 'Audiowide', cursive;
+            font-size: clamp(2rem, 6vw, 3.5rem);
+            margin: 0;
+            color: var(--accent-bright-silver);
+            letter-spacing: 4px;
+            text-shadow: 0 0 20px var(--glow-silver);
+            position: relative;
+            display: inline-block;
+        }
+        
+        .hero-header p { 
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 1.2rem; 
+            color: var(--text-secondary); 
+            margin-top: 15px; 
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        /* --- Panel Cards Grid --- */
+        .panel-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            max-width: 1100px;
+            margin: 0 auto 50px;
+            padding: 0 20px;
+        }
+
+        .panel-card {
+            background: var(--bg-card);
+            padding: 40px 30px;
+            border-radius: 16px;
+            text-align: center;
+            border: 1px solid var(--border-color);
+            transition: var(--transition-smooth);
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+        }
+
+        /* Silver Glow border effect on hover */
+        .panel-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            border-radius: 16px;
+            padding: 2px; /* Border thickness */
+            background: linear-gradient(135deg, transparent 40%, var(--accent-bright-silver), transparent 60%);
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .panel-card:hover {
+            transform: translateY(-8px);
+            background: #202028;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6), 0 0 20px rgba(192, 197, 206, 0.1);
+        }
+        
+        .panel-card:hover::before {
+            opacity: 1;
+            /* Animated border reflection */
+            background-size: 200% 200%;
+            animation: borderShine 3s linear infinite;
+        }
+
+        @keyframes borderShine {
+            0% { background-position: 0% 0%; }
+            100% { background-position: 200% 200%; }
+        }
+
+        .card-icon {
+            font-size: 2.8rem;
+            margin-bottom: 25px;
+            color: var(--accent-silver);
+            transition: var(--transition-smooth);
+        }
+        
+        .panel-card:hover .card-icon {
+            color: var(--accent-bright-silver);
+            text-shadow: 0 0 15px var(--glow-strong);
+            transform: scale(1.1);
+        }
+
+        .panel-card h3 {
+            font-family: 'Audiowide', cursive;
+            font-size: 1.2rem;
+            margin: 0 0 12px 0;
+            color: var(--text-primary);
+            letter-spacing: 1.5px;
+        }
+        
+        .panel-card p { 
+            font-family: 'Inter', sans-serif;
+            color: var(--text-secondary); 
+            font-size: 0.9rem; 
+            line-height: 1.5;
+            margin: 0;
+        }
+
+        /* Status Badge for Cards */
+        .status-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 4px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .status-active {
+            background: rgba(192, 197, 206, 0.1);
+            color: var(--accent-silver);
+            border: 1px solid rgba(192, 197, 206, 0.3);
+        }
+
+        .status-upcoming {
+            background: rgba(74, 78, 89, 0.2);
+            color: var(--accent-dark-silver);
+            border: 1px solid rgba(74, 78, 89, 0.3);
+        }
+
+        /* --- Content & Download Area --- */
+        #content-display-area {
+            display: none;
+            max-width: 700px;
+            margin: 20px auto 60px;
+            padding: 50px;
+            background: var(--bg-card);
+            border-radius: 16px;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+            position: relative;
+        }
+
+        .back-button {
+            position: absolute;
+            top: 25px;
+            left: 25px;
+            background: transparent;
+            border: 1px solid var(--border-color);
+            padding: 8px 16px;
+            color: var(--text-secondary);
+            font-family: 'Rajdhani', sans-serif;
+            font-weight: 700;
+            font-size: 0.9rem;
+            border-radius: 6px;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: var(--transition-smooth);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .back-button:hover {
+            color: var(--accent-bright-silver);
+            border-color: var(--accent-silver);
+            background: rgba(192, 197, 206, 0.05);
+            box-shadow: 0 0 15px rgba(192, 197, 206, 0.1);
+        }
+
+        /* Custom Box Styling for Sections */
+        .info-card-box {
+            background: rgba(255, 255, 255, 0.02);
+            padding: 40px;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            text-align: center;
+            animation: fadeIn 0.6s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .section-title-box {
+            font-family: 'Audiowide', cursive;
+            font-size: 1.8rem;
+            color: var(--accent-bright-silver);
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+        }
+
+        /* --- UID BYPASS Specific Styles --- */
+        .download-interface {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            width: 100%;
+            max-width: 450px;
+            margin: 0 auto;
+        }
+
+        .info-row-box {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: rgba(192, 197, 206, 0.03);
+            padding: 12px 20px;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            width: 100%;
+            font-family: 'Rajdhani', sans-serif;
+            font-weight: 700;
+            color: var(--text-secondary);
+            letter-spacing: 1px;
+        }
+        .info-row-box i { color: var(--accent-silver); }
+        .info-row-value { color: var(--accent-bright-silver); font-family: 'Inter', sans-serif; font-weight: 500; }
+
+        .video-link-banner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: rgba(255, 0, 85, 0.02);
+            padding: 12px 20px;
+            border-radius: 8px;
+            border: 1px dashed rgba(255, 0, 85, 0.25);
+            width: 100%;
+            font-family: 'Rajdhani', sans-serif;
+            font-weight: 700;
+            transition: var(--transition-smooth);
+        }
+        .video-link-banner:hover {
+            border-color: rgba(255, 0, 85, 0.7);
+            background: rgba(255, 0, 85, 0.05);
+        }
+        .v-text { display: flex; align-items: center; gap: 8px; color: #ff3366; }
+        .v-btn {
+            font-family: 'Audiowide', sans-serif;
+            background: transparent;
+            color: var(--accent-bright-silver);
+            font-size: 0.75rem;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            padding: 6px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+        }
+        .video-link-banner:hover .v-btn {
+            background: #ff3366;
+            color: #fff;
+            border-color: #ff3366;
+            box-shadow: 0 0 10px rgba(255, 51, 102, 0.3);
+        }
+        
+        .download-btn {
+            display: inline-block;
+            background: var(--accent-bright-silver);
+            color: var(--bg-primary) !important;
+            padding: 16px 50px;
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 1.15rem;
+            font-weight: 800;
+            border-radius: 8px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: var(--transition-smooth);
+            cursor: pointer;
+            border: none;
+            text-decoration: none;
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+            width: 100%;
+            text-align: center;
+        }
+
+        .download-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 25px rgba(255, 255, 255, 0.4);
+            background: #e0e5ec;
+        }
+
+        /* Coming Soon Modal/Toast */
+        .toast-msg {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%) translateY(100px);
+            background: rgba(192, 197, 206, 0.1);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(192, 197, 206, 0.3);
+            color: var(--accent-bright-silver);
+            padding: 15px 30px;
+            border-radius: 8px;
+            font-family: 'Rajdhani', sans-serif;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            opacity: 0;
+            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            z-index: 2000;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .toast-msg.show {
+            transform: translateX(-50%) translateY(0);
+            opacity: 1;
+        }
+
+        .toast-msg i {
+            color: var(--accent-silver);
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px;
+            color: var(--text-secondary);
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            border-top: 1px solid var(--border-color);
+            background: var(--bg-secondary);
+        }
+
+        @media (max-width: 768px) {
+            .navbar { flex-direction: column; gap: 20px; padding: 20px; }
+            .nav-links { flex-wrap: wrap; justify-content: center; }
+            #content-display-area { margin: 20px; padding: 60px 20px 30px; }
+            .back-button { top: 15px; left: 15px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="cursor-glow"></div>
+
+    <nav class="navbar">
+        <div class="brand-logo">NHE</div>
+        <ul class="nav-links">
+            <li><a class="nav-item" onclick="showHome()">Terminal</a></li>
+            <li><a class="nav-item" onclick="showToast()">Network</a></li>
+            <li><a class="nav-item" onclick="showToast()">Protocol</a></li>
+            <li><a href="https://discord.gg/2qNzUt3Z" target="_blank" class="nav-item">Discord</a></li>
+        </ul>
+    </nav>
+
+    <main id="main-content">
+        <header class="hero-header">
+            <h1>NEXT HIDDEN ELITE</h1>
+            <p>GAMES TOOLS</p>
+        </header>
+
+        <div class="panel-container">
+            
+            <div class="panel-card" onclick="showUIDBypass()">
+                <div class="status-badge status-active">Operational</div>
+                <i class="fa-solid fa-fingerprint card-icon"></i>
+                <h3>FREE UID BYPASS</h3>
+                <p>Advanced identification masking and routing protocols.</p>
+            </div>
+
+            <div class="panel-card" onclick="showToast()">
+                <div class="status-badge status-upcoming">Pending</div>
+                <i class="fa-solid fa-bolt card-icon"></i>
+                <h3>FREE PANEL</h3>
+                <p>Standard issue utility toolset. Currently undergoing maintenance.</p>
+            </div>
+
+            <div class="panel-card" onclick="showToast()">
+                <div class="status-badge status-upcoming">Pending</div>
+                <i class="fa-solid fa-desktop card-icon"></i>
+                <h3>EMULATOR BYPASS</h3>
+                <p>Virtual environment cloaking algorithms.</p>
+            </div>
+
+            <div class="panel-card" onclick="showToast()">
+                <div class="status-badge status-upcoming">Pending</div>
+                <i class="fa-solid fa-crosshairs card-icon"></i>
+                <h3>TARGETING CORE</h3>
+                <p>Precision calibration and automated alignment.</p>
+            </div>
+            
+            <div class="panel-card" onclick="showToast()">
+                <div class="status-badge status-upcoming">Pending</div>
+                <i class="fa-solid fa-gem card-icon"></i>
+                <h3>PREMIUM V1</h3>
+                <p>Tier-1 access to restricted architectural nodes.</p>
+            </div>
+
+            <div class="panel-card" onclick="showToast()">
+                <div class="status-badge status-upcoming">Pending</div>
+                <i class="fa-solid fa-shield-halved card-icon"></i>
+                <h3>PREMIUM V2</h3>
+                <p>Elite security measures and full system override.</p>
+            </div>
+
+        </div>
+    </main>
+
+    <section id="content-display-area">
+        <button class="back-button" onclick="showHome()">
+            <i class="fa-solid fa-chevron-left"></i> Return
+        </button>
+        <div id="dynamic-content-text"></div>
+    </section>
+
+    <div id="toast" class="toast-msg">
+        <i class="fa-solid fa-lock"></i>
+        <span>Module is currently compiling. Coming Soon.</span>
+    </div>
+
+    <footer>
+        &copy; 2026 NEXT HIDDEN ELITE. Secure Terminal.
+    </footer>
+
+    <script>
+        // --- Custom Cursor Glow Effect ---
+        const glow = document.getElementById('cursor-glow');
+        
+        document.addEventListener('mousemove', (e) => {
+            // Update position
+            glow.style.left = e.clientX + 'px';
+            glow.style.top = e.clientY + 'px';
+        });
+
+        // Dim glow when leaving window
+        document.addEventListener('mouseleave', () => {
+            glow.style.opacity = '0';
+        });
+        
+        document.addEventListener('mouseenter', () => {
+            glow.style.opacity = '0.15';
+        });
+
+        // Increase glow slightly when clicking
+        document.addEventListener('mousedown', () => {
+            glow.style.opacity = '0.25';
+            glow.style.width = '350px';
+            glow.style.height = '350px';
+        });
+        
+        document.addEventListener('mouseup', () => {
+            glow.style.opacity = '0.15';
+            glow.style.width = '400px';
+            glow.style.height = '400px';
+        });
+
+        // --- Navigation Logic ---
+        const mainContentDiv = document.getElementById('main-content');
+        const contentDisplayArea = document.getElementById('content-display-area');
+        const dynamicContentText = document.getElementById('dynamic-content-text');
+        let toastTimeout;
+
+        function showHome() {
+            mainContentDiv.style.display = 'block';
+            contentDisplayArea.style.display = 'none';
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Show "Coming Soon" Toast
+        function showToast() {
+            const toast = document.getElementById('toast');
+            toast.classList.add('show');
+            
+            clearTimeout(toastTimeout);
+            toastTimeout = setTimeout(() => {
+                toast.classList.remove('show');
+            }, 3000);
+        }
+
+        // Show UID BYPASS Content
+        function showUIDBypass() {
+            mainContentDiv.style.display = 'none';
+            contentDisplayArea.style.display = 'block';
+            
+            dynamicContentText.innerHTML = `
+                <div class="info-card-box">
+                    <h2 class="section-title-box">UID BYPASS MODULE</h2>
+                    
+                    <div class="download-interface">
+                        <div class="info-row-box">
+                            <span><i class="fa-solid fa-code-branch" style="margin-right: 10px;"></i> BYPASS VERSION:</span>
+                            <span class="info-row-value">V2.1</span>
+                        </div>
+
+                        <div class="info-row-box">
+                            <span><i class="fa-solid fa-lock" style="margin-right: 10px;"></i> RAR PASS:</span>
+                            <span class="info-row-value rar-pass" style="font-weight: bold; letter-spacing: 1px;">1</span>
+                        </div>
+                        
+                        <div class="video-link-banner">
+                            <span class="v-text"><i class="fa-brands fa-youtube"></i> USER PASS</span>
+                            <a href="https://youtu.be/iNWLLSTNwgo?si=8a-BDu0hdaMb_Hp-" target="_blank">
+                                <button class="v-btn">WATCH VIDEO</button>
+                            </a>
+                        </div>
+
+                        <p style="color: var(--text-secondary); margin: 5px 0 10px; font-size: 0.9rem; max-width: 400px; line-height: 1.6;">
+                            Secure archive ready for deployment. Extract using the credentials listed above.
+                        </p>
+
+                        <a href="NHE_UID_BYPASS.zip" download class="download-btn">
+                            <i class="fa-solid fa-download" style="margin-right: 8px;"></i> INITIATE DOWNLOAD
+                        </a>
+                    </div>
+                </div>
+            `;
+            
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>

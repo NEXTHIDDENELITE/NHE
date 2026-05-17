@@ -252,6 +252,24 @@
             border: 1px solid rgba(74, 78, 89, 0.3);
         }
 
+        /* Popular Badge Style */
+        .popular-badge {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 4px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            background: rgba(255, 51, 102, 0.15);
+            color: #ff3366;
+            border: 1px solid rgba(255, 51, 102, 0.3);
+            box-shadow: 0 0 10px rgba(255, 51, 102, 0.1);
+        }
+
         /* --- Content & Download Area --- */
         #content-display-area {
             display: none;
@@ -484,6 +502,7 @@
             
             <div class="panel-card" onclick="showUIDBypass()">
                 <div class="status-badge status-active">Operational</div>
+                <div class="popular-badge">Popular</div>
                 <i class="fa-solid fa-fingerprint card-icon"></i>
                 <h3>FREE UID BYPASS</h3>
                 <p>Advanced identification masking and routing protocols.</p>
@@ -620,7 +639,7 @@
                         
                         <div class="video-link-banner">
                             <span class="v-text"><i class="fa-brands fa-youtube"></i> USER PASS</span>
-                            <a href="https://youtu.be/rd94a-1nXFU">
+                            <a href="https://youtu.be/rd94a-1nXFU" target="_blank">
                                 <button class="v-btn">WATCH VIDEO</button>
                             </a>
                         </div>
